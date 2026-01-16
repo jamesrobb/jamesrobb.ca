@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Yolo on James Robb</title><link>https://jamesrobb.ca/tags/yolo/</link><description>Recent content in Yolo on James Robb</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>me@jamesrobb.ca (James Robb)</managingEditor><webMaster>me@jamesrobb.ca (James Robb)</webMaster><copyright>© 2026 James Robb</copyright><lastBuildDate>Sun, 31 May 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://jamesrobb.ca/tags/yolo/index.xml" rel="self" type="application/rss+xml"/><item><title>In The Heat of The Moment: Samsung Tablet Data Extraction</title><link>https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/</link><pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate><author>me@jamesrobb.ca (James Robb)</author><guid>https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/</guid><description/><content:encoded>&lt;p&gt;While visiting a friend recently he mentioned that he dropped his tablet and hasn&amp;rsquo;t been able to get it to turn on since. As it usually goes in such situations, there were no backups to speak of. The tablet was his daily driver and held a bunch of writing and photos that he wanted to recover, if possible. Not being a techy himself, and hesitant to throw hundreds of dollars at repair services that might yield nothing, he was glad when I offered to take a look. I told him that I couldn&amp;rsquo;t promise anything, and I could very well destroy what might be an entirely repairable tablet. Knowing the risks, he gave me the green light, as it would likely just serve as a brick otherwise.&lt;/p&gt;
+&lt;h2 class="relative group"&gt;Symptoms
+&lt;div id="symptoms" class="anchor"&gt;&lt;/div&gt;
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+&lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#symptoms" aria-label="Anchor"&gt;#&lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;
+&lt;p&gt;The tablet in question is a Samsung Galaxy Tab S7. When I got it home the battery was stone dead. I plugged it in until the charge-level reached 10% and then tried to turn it on. It was stuck in a boot loop: I&amp;rsquo;d see the Samsung splash screen for a few seconds, then screen would show all black and flicker (but not turn off), and finally after ten seconds or so the system would reboot.&lt;/p&gt;
+&lt;p&gt;I wasn&amp;rsquo;t really sure what was wrong, so I thought I&amp;rsquo;d do a visual inspection.&lt;/p&gt;
+&lt;h2 class="relative group"&gt;Initial Inspection
+&lt;div id="initial-inspection" class="anchor"&gt;&lt;/div&gt;
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+&lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#initial-inspection" aria-label="Anchor"&gt;#&lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;
+&lt;p&gt;I opened up the tablet to take a look. It wasn&amp;rsquo;t a particularly hard task and there are plenty of videos online that demonstrate it. Briefly, one uses a blowdryer to heat up the edges of the screen so the adhesive loosens, and then a suction cup and a plastic wedge to separate the screen from the body.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Tablet with screen removed"
+width="971"
+height="1295"
+src="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/tablet_open_hu_a6f83337328c5167.jpg"
+srcset="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/tablet_open_hu_a6f83337328c5167.jpg 800w, https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/tablet_open.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/tablet_open.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I could not see anything immediately wrong with the tablet once I had it open, but that wasn&amp;rsquo;t super surprising either. I didn&amp;rsquo;t have much to go on, so the next thing I thought I&amp;rsquo;d try was to disconnect the battery and see if I could get the tablet to boot just using an external power source.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Battery ribbon cable disconnected"
+width="971"
+height="1295"
+src="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/battery_disconnected_hu_7dae6da0ab9a8c1a.jpg"
+srcset="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/battery_disconnected_hu_7dae6da0ab9a8c1a.jpg 800w, https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/battery_disconnected.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/battery_disconnected.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;At this point I was being lazy and trying to avoid removing all the plastic shielding. I was able to disconnect the ribbon cable, plugin an external power source, and still the same boot loop. I did a bit of research and the internet seemed to suggest that the absence of a battery would cause a boot loop, so what I had done so far had unfortunately revealed no new information.&lt;/p&gt;
+&lt;h2 class="relative group"&gt;Battery Bypass
+&lt;div id="battery-bypass" class="anchor"&gt;&lt;/div&gt;
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+&lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#battery-bypass" aria-label="Anchor"&gt;#&lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;
+&lt;p&gt;The next thing I wanted to try was bypassing the battery altogether. Given the system apparently needed to have a working battery, but I had no replacement battery to play with, I opted to harvest the small PCB the battery was connected to and drive it with a bench power supply.&lt;/p&gt;
+&lt;p&gt;To start on this I needed to stop being lazy and remove all the plastic shielding. This means I got to break out &lt;em&gt;the bit set&lt;/em&gt; (ooooo aaaah).&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="The bit set"
+width="971"
+height="1295"
+src="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/bits_hu_744d841534ad4ae6.jpg"
+srcset="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/bits_hu_744d841534ad4ae6.jpg 800w, https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/bits.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/bits.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;After removing something like thirty or forty tiny screws I was at the point I could pull the battery out. I used the blowdryer again to loosen the adhesive and I pried it out with the help of some plastic wedges. Using my skills as a professional dumbass and a pair of scissors, I was able to separate the battery from its PCB (which has the ribbon cable that attached to the motherboard).&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Battery without PCB"
+width="2587"
+height="1940"
+src="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/battery_hu_dac321f83e1d089f.jpg"
+srcset="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/battery_hu_dac321f83e1d089f.jpg 800w, https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/battery_hu_f407e4bdbfde5a86.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/battery.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Battery PCB with ribbon cable"
+width="1727"
+height="1295"
+src="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/battery_board_hu_1e81da05b5f40f21.jpg"
+srcset="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/battery_board_hu_1e81da05b5f40f21.jpg 800w, https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/battery_board_hu_58d3de5a3193c040.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/battery_board.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;In the second photo above you can see where the battery was glued down, and alligator clips running from a bench power supply hooked up to the contacts where the battery was previously connected.&lt;/p&gt;
+&lt;p&gt;With that all done I set the bench power supply to 3.8 volts and tried to get the tablet to start.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Boot loop with bench power supply"
+width="971"
+height="1295"
+src="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/boot_loop_hu_eb6950154e515dca.jpg"
+srcset="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/boot_loop_hu_eb6950154e515dca.jpg 800w, https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/boot_loop.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/boot_loop.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I was now getting a bit further. Sometimes when I would turn the tablet on I could get to the login screen, but most times not (just the same old boot loop instead). So it looks like the battery was an issue, but not the only issue.&lt;/p&gt;
+&lt;p&gt;On the few occasions I could actually get to the login screen it would freeze and become unresponsive within ten or so seconds. I noticed that I tended to get further through the startup process when I left the tablet alone for a few hours. After thinking about it for a while I wondered if the drop had caused a fracture in a solder joint, and the heat generated while the tablet was running caused just enough expansion to cause the system to fail shortly after startup.&lt;/p&gt;
+&lt;p&gt;We now move onto the part where in hindsight I got much braver than I probably should have.&lt;/p&gt;
+&lt;h2 class="relative group"&gt;The Heat Gun
+&lt;div id="the-heat-gun" class="anchor"&gt;&lt;/div&gt;
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+&lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#the-heat-gun" aria-label="Anchor"&gt;#&lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;
+&lt;p&gt;I do not own a reflow station nor a small toaster oven for baking PCBs. I&amp;rsquo;d like such a small oven, but they are weirdly difficult to come by in Iceland, and I&amp;rsquo;ve never needed one badly enough that the shipping would be worth it. I do own a heat gun though!&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Heat gun"
+width="1727"
+height="1295"
+src="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/heat_gun_hu_895c33f291d80b73.jpg"
+srcset="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/heat_gun_hu_895c33f291d80b73.jpg 800w, https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/heat_gun_hu_58cf2fddd20dfe0a.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/heat_gun.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;This was another moment where I truly shined as a professional dumbass. I really do not recommend anyone try this, but I was out of ideas and the owner of the tablet had already written it off, so there was little to lose.&lt;/p&gt;
+&lt;p&gt;The plan was to heat up the SoC enough that any solder joints would heal, but not so hot as to destroy the chip. To accomplish this I used the very scientific method of applying heat for a few seconds, then removing it for a few, and repeating until I was satisfied the board had gotten hot enough. I did however try to protect the rest of the board with some aluminum foil.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Aluminum foil shield over tablet motherboard"
+width="1727"
+height="1295"
+src="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/foil_shield_hu_d704aefae2a40430.jpg"
+srcset="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/foil_shield_hu_d704aefae2a40430.jpg 800w, https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/foil_shield_hu_15a9f41310b0bd4e.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/foil_shield.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;With the SoC cooked medium-rare, I re-installed the tablet&amp;rsquo;s motherboard and tried to boot the system again.&lt;/p&gt;
+&lt;h2 class="relative group"&gt;We&amp;rsquo;re In
+&lt;div id="were-in" class="anchor"&gt;&lt;/div&gt;
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+&lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#were-in" aria-label="Anchor"&gt;#&lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;
+&lt;p&gt;To my amazement, the tablet actually booted and did not freeze.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Tablet running and on home screen"
+width="4096"
+height="3072"
+src="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/we_are_in_hu_d03e0a400d5a8fd1.jpg"
+srcset="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/we_are_in_hu_d03e0a400d5a8fd1.jpg 800w, https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/we_are_in_hu_ecb8691d71fb2380.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/we_are_in.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I really wanted to do the hacker thing and exclaim &amp;ldquo;I&amp;rsquo;m in!&amp;rdquo;, but after seeing the wallpaper all I could think was &amp;ldquo;&lt;a
+href="https://www.youtube.com/watch?v=U06jlgpMtQs&amp;amp;t=4s"
+target="_blank"
+&gt;we&amp;rsquo;re in&lt;/a&gt;&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;From this point it was pretty simple to get his data off. In the past I had always used Windows or Linux to pull data off my android devices - the file managers worked with android out of the box. This time I was using MacOS and so I gave &lt;a
+href="https://openmtp.ganeshrvel.com/"
+target="_blank"
+&gt;OpenMTP&lt;/a&gt; a try. It did the trick, but it sure would be nice if Finder just worked with Android!&lt;/p&gt;
+&lt;p&gt;For those that got this far, thanks for reading! This was a fun learning experience where I got to see being a bit braver-than-usual pay off.&lt;/p&gt;
+&lt;p&gt;Also, please don&amp;rsquo;t use your heat gun for this. I got lucky - you are more likely than not to melt whatever you&amp;rsquo;re pointing it at.&lt;/p&gt;</content:encoded></item></channel></rss>

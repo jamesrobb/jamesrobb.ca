@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Architecture on James Robb</title><link>https://jamesrobb.ca/tags/architecture/</link><description>Recent content in Architecture on James Robb</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>me@jamesrobb.ca (James Robb)</managingEditor><webMaster>me@jamesrobb.ca (James Robb)</webMaster><copyright>© 2026 James Robb</copyright><lastBuildDate>Wed, 21 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://jamesrobb.ca/tags/architecture/index.xml" rel="self" type="application/rss+xml"/><item><title>Building a Multi-Tenant Metrics Pipeline for Thousands of Clients</title><link>https://jamesrobb.ca/projects/metrics_pipeline/</link><pubDate>Wed, 21 Jan 2026 00:00:00 +0000</pubDate><author>me@jamesrobb.ca (James Robb)</author><guid>https://jamesrobb.ca/projects/metrics_pipeline/</guid><description/><content:encoded>
+&lt;h2 class="relative group"&gt;Introduction
+&lt;div id="introduction" class="anchor"&gt;&lt;/div&gt;
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+&lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#introduction" aria-label="Anchor"&gt;#&lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;
+&lt;p&gt;The last big project I worked on during my time at &lt;a
+href="https://yellowbrick.com/"
+target="_blank"
+&gt;Yellowbrick&lt;/a&gt; was a brand new observability stack for the core product, an &lt;a
+href="https://en.wikipedia.org/wiki/Online_analytical_processing"
+target="_blank"
+&gt;OLAP&lt;/a&gt; data warehouse. The company had finished a big push to create a cloud version of the product (which up to that point ran on a custom appliance) and we were finding that our mostly log-driven approach to observability was falling short. Diagnosing performance issues or failures took too much time and effort, and cloud customers had much different expectations on how to observe the health of their systems than our appliance customers.&lt;/p&gt;
+&lt;p&gt;The solution, at a high level, was straightforward: instrument the product to expose &lt;a
+href="https://prometheus.io/"
+target="_blank"
+&gt;Prometheus&lt;/a&gt; metrics, and use &lt;a
+href="https://grafana.com/"
+target="_blank"
+&gt;Grafana&lt;/a&gt; to visualize them. Prometheus and Grafana are ubiquitous observability tools and would allow both developers and customers to get quick and meaningful insight into a running system. Reality was more complicated. In broad strokes, the data warehouse consists of three main components: the query planner, the compiler and resource manager, and the execution engine. These components were developed in three different languages, at different times, and by different people. The specifics of how we instrumented them are out of scope for what I want to talk about here, but it took several very talented engineers considerable time and effort to do.&lt;/p&gt;
+&lt;p&gt;One of the core expectations of this project was that we could see all metrics collected on all Yellowbrick systems, customer and internal, in real time. Several posts could be written about how this project as a whole was designed and implemented, but here I want to focus on the metrics transport - that is, how we reliably got metrics from all running Yellowbrick systems into a centralized &lt;a
+href="https://thanos.io/"
+target="_blank"
+&gt;Thanos&lt;/a&gt; deployment, and how we visualized them.&lt;/p&gt;
+&lt;h2 class="relative group"&gt;Requirements
+&lt;div id="requirements" class="anchor"&gt;&lt;/div&gt;
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+&lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#requirements" aria-label="Anchor"&gt;#&lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;
+&lt;p&gt;From here, we assume that the product is fully instrumented and exposes useful metrics via a collection of Prometheus-scrapable HTTP endpoints. The requirements for the metrics transport were:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The metrics must be available in real time, or close to it.&lt;/li&gt;
+&lt;li&gt;We could not lose data - if our infrastructure was unavailable, metrics needed to queue until transport resumed.&lt;/li&gt;
+&lt;li&gt;We had to be able to remotely configure what metrics are sent to Thanos.&lt;/li&gt;
+&lt;li&gt;Only data from systems with a valid license should be ingested.&lt;/li&gt;
+&lt;li&gt;Support thousands of systems reporting metrics in parallel.&lt;/li&gt;
+&lt;li&gt;Use the same dashboards we shipped to customers; dogfooding ensures they remain useful and polished.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Given these requirements, the naive approach of having Prometheus write directly to Thanos breaks down. Prometheus can be configured to write directly to Thanos using RWP (&lt;a
+href="https://prometheus.io/docs/specs/prw/remote_write_spec/"
+target="_blank"
+&gt;Remote Write Protocol&lt;/a&gt;), but using Prometheus&amp;rsquo; RWP functionality alone can&amp;rsquo;t satisfy requirements 2 and 3, and while satisfying requirement 4 is technically possible, doing so is fragile in practice.&lt;/p&gt;
+&lt;p&gt;When Prometheus writes to a remote endpoint using RWP, it maintains in-memory queues to hold the samples. If the remote endpoint is unavailable for too long, Prometheus eventually starts discarding the oldest samples in the queues. How long &amp;ldquo;too long&amp;rdquo; is will depend on things like how many samples Prometheus is attempting to send and how much memory is available to Prometheus. In practice, this is on the order of minutes or hours, not days, and so satisfying requirement 2 isn&amp;rsquo;t feasible.&lt;/p&gt;
+&lt;p&gt;The fact that Prometheus&amp;rsquo; configuration is static (it&amp;rsquo;s a file on disk) also presents issues. We felt that any approach that required rewriting Prometheus&amp;rsquo; configuration file, be it in response to license changes or changes to what metrics we want to collect, opened us up to too much operational risk. If there was any problem in the configuration, we could not only interrupt the flow of metrics to Thanos, but also prevent Prometheus from coming online at all. For this reason, we could not satisfy requirements 3 and 4 with the naive approach.&lt;/p&gt;
+&lt;h2 class="relative group"&gt;Heimdall
+&lt;div id="heimdall" class="anchor"&gt;&lt;/div&gt;
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+&lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#heimdall" aria-label="Anchor"&gt;#&lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;
+&lt;p&gt;To satisfy all the requirements in an operationally stable way, we developed Heimdall. It comprises two binaries, Heimdall Egress and Heimdall Ingress. I built Heimdall in Golang because I&amp;rsquo;ve found it to be a wonderful programming language for tasks involving concurrency and parallelism (and I just genuinely enjoy working in it). The egress binary runs alongside Prometheus in the customer&amp;rsquo;s Kubernetes cluster and the ingress binary on &amp;ldquo;the mothership&amp;rdquo;. The mothership is a large virtual machine that runs Thanos, Heimdall Ingress, Grafana, and a few other supporting services.&lt;/p&gt;
+&lt;h3 class="relative group"&gt;Overview
+&lt;div id="overview" class="anchor"&gt;&lt;/div&gt;
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+&lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#overview" aria-label="Anchor"&gt;#&lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;
+&lt;p&gt;The two binaries work together to relay metrics from the customer&amp;rsquo;s Prometheus into Thanos. From the perspective of Prometheus and Thanos the ingress and egress binaries are just services that speak RWP, but to satisfy all our requirements they needed to do a bit more.&lt;/p&gt;
+&lt;p&gt;The egress binary is responsible for:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Relaying metrics it receives from Prometheus to the ingress binary.&lt;/li&gt;
+&lt;li&gt;Persisting metrics to a disk-based FIFO queue until the ingress binary confirms Thanos has accepted them.&lt;/li&gt;
+&lt;li&gt;Filtering metrics with a whitelist and blacklist regex.&lt;/li&gt;
+&lt;li&gt;Finding and attaching the customer license to each payload sent to the ingress binary.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The ingress binary is responsible for:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Relaying metrics it receives from the egress binary to Thanos.&lt;/li&gt;
+&lt;li&gt;Checking that payloads have a valid license attached.&lt;/li&gt;
+&lt;li&gt;Maintaining a whitelist and blacklist regex per tenant (i.e., customer) that the egress binary can query for.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Before we go any further, let&amp;rsquo;s see how data flows through this system. It&amp;rsquo;ll do wonders to keep us on the same page as we dive into the details. The arrows reflect the flow of data.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Metrics flow from customer system to Thanos"
+width="1342"
+height="1262"
+src="https://jamesrobb.ca/projects/metrics_pipeline/heimdall_overview_hu_6346b07b64f70b5.png"
+srcset="https://jamesrobb.ca/projects/metrics_pipeline/heimdall_overview_hu_6346b07b64f70b5.png 800w, https://jamesrobb.ca/projects/metrics_pipeline/heimdall_overview_hu_b3e0efbabfcfad85.png 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/metrics_pipeline/heimdall_overview.png"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Prometheus scrapes the various endpoints exposed by each instance of the instrumented data warehouse and relays them to the egress binary via RWP. The egress binary sends the RWP payload (after filtering it through the whitelist/blacklist) onto the ingress binary, attaching the license (&lt;a
+href="https://en.wikipedia.org/wiki/JSON_Web_Token"
+target="_blank"
+&gt;JWT&lt;/a&gt;) as an HTTP header. Finally, the ingress binary sends the RWP payload to Thanos if the license is valid, and returns an HTTP 200 to the egress binary to let it know the payload has been received and can be dropped.&lt;/p&gt;
+&lt;h3 class="relative group"&gt;Egress
+&lt;div id="egress" class="anchor"&gt;&lt;/div&gt;
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+&lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#egress" aria-label="Anchor"&gt;#&lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;
+&lt;p&gt;There are two important flows worth covering in the egress binary: forwarding data from Prometheus to Thanos, and fetching the whitelist and blacklist.&lt;/p&gt;
+&lt;p&gt;The high-level process for receiving and sending RWP payloads looks like this. I omit the details on retrieving a license because it&amp;rsquo;s not very interesting - I just use the Kubernetes API to query for a configmap with a known name (and cache the result to avoid future lookup times).&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Metrics flow through Heimdall Egress binary"
+width="2036"
+height="1362"
+src="https://jamesrobb.ca/projects/metrics_pipeline/heimdall_egress_overview_hu_8c178710bb570de1.png"
+srcset="https://jamesrobb.ca/projects/metrics_pipeline/heimdall_egress_overview_hu_8c178710bb570de1.png 800w, https://jamesrobb.ca/projects/metrics_pipeline/heimdall_egress_overview_hu_72eec10f51e106a2.png 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/metrics_pipeline/heimdall_egress_overview.png"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;When metrics come in from Prometheus, they are first fed through a whitelist and blacklist. There are two key reasons we can&amp;rsquo;t simply ship all metrics Prometheus collects to the ingress binary:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;We can&amp;rsquo;t know the volume of data a customer&amp;rsquo;s Prometheus installation will produce, and there is no good reason to store metrics we are not interested in.&lt;/li&gt;
+&lt;li&gt;Customers might produce metrics with data they wish to keep private.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The reason we have both a whitelist &lt;em&gt;and&lt;/em&gt; a blacklist (which are regular expressions) is really to accommodate cases where we want all metrics of the form &lt;code&gt;yb_.*&lt;/code&gt;, but don&amp;rsquo;t want &lt;code&gt;yb_bad_metric&lt;/code&gt;. Without the blacklist we would need to turn that whitelist expression into an explicit list of every metric of that form except &lt;code&gt;yb_bad_metric&lt;/code&gt; - this would quickly become a headache.&lt;/p&gt;
+&lt;p&gt;To begin whitelist and blacklist filtering, the egress binary needs to unpack the RWP payload to know the metric names. Any metrics that make it through this filtering are then re-packaged and committed to the FIFO queue. In a separate thread the RWP payloads in the FIFO queue are read and unpacked again. The metric names are then hashed so we can place the data in one of &lt;code&gt;N&lt;/code&gt; forwarding queues (which all execute concurrently). Metric names must be deterministically assigned to the same queue because RWP specifies (and Thanos enforces) that data sent for a metric must not have a timestamp older than data already received for that metric. If two samples with the same metric name landed in two different queues, then data could arrive at the ingress binary in the wrong chronological order. When a forwarding queue fills up (or a repeating timeout is hit), the contents of a queue are packaged as an RWP payload and sent to the ingress binary with the customer&amp;rsquo;s license. One might say that we are doing too much work by unpacking the payload twice, but consider:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;To keep as much disk space available as possible for the metrics we want, it makes sense to filter before putting payloads into the FIFO queue.&lt;/li&gt;
+&lt;li&gt;Queue selection could be done here, but then the number of forwarding queues could not be changed without the risk of sending data in the wrong order.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For these reasons, we pay the price of unpacking twice. I had the same concern, but after some testing I found it did not matter at all. The egress binary is mostly network-bound - the only time it used a meaningful amount of CPU was on our internal Kubernetes cluster that had hundreds of data warehouse instances running at any given time.&lt;/p&gt;
+&lt;p&gt;The reason we have more than one forwarding queue is to accommodate bigger deployments. On a typical deployment one forwarding queue is sufficient, but on large deployments or deployments where latency to the mothership was high, we found that the egress binary would struggle to keep up. In some of the worst cases we found the egress binary would fall further and further behind, but these problems disappeared with the parallelism introduced by several forwarding queues.&lt;/p&gt;
+&lt;p&gt;Moving on, the ingress binary will send back an acknowledgement or failure. There are three broad cases the egress binary has to deal with:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Payload accepted: Drop the payload from the FIFO queue.&lt;/li&gt;
+&lt;li&gt;Failure but try again: Wait some time and try again, but don&amp;rsquo;t discard from the FIFO queue. This could occur if the mothership is offline or partially degraded, for example.&lt;/li&gt;
+&lt;li&gt;Failure but don&amp;rsquo;t try again: Drop the payload from the FIFO queue. This could occur if Thanos says the payload is malformed, in which case trying again would not help.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The last thing I want to go over on the egress binary is the whitelist and blacklist. The egress binary fetches the whitelist and blacklist from the ingress binary. The egress binary includes the customer license in this request as well so the ingress binary knows which whitelist and blacklist pair to send back, as each &lt;em&gt;tenant&lt;/em&gt; can have their own. From the perspective of Heimdall, a tenant is a Kubernetes cluster. The license sent to the ingress binary contains information like customer name, cloud provider, region, and Kubernetes cluster name. Using this information we can derive a unique tenant ID. If the egress binary is unable to get a whitelist and blacklist pair from the ingress binary, a broad default is used for each.&lt;/p&gt;
+&lt;h3 class="relative group"&gt;Ingress
+&lt;div id="ingress" class="anchor"&gt;&lt;/div&gt;
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+&lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#ingress" aria-label="Anchor"&gt;#&lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;
+&lt;p&gt;Of the two binaries, Heimdall Ingress is the simpler one. It just forwards data to Thanos if the attached license is valid, and maintains a whitelist and blacklist pair for each tenant.&lt;/p&gt;
+&lt;p&gt;License validation is simple. The ingress binary has a store of public keys and checks to see if the JWT was signed by one of those keys. If the signature is good and the license is not past its expiration date, it&amp;rsquo;s considered valid. We cache successful validations to avoid paying the validation cost each time a payload is received. If an invalid license is detected, the egress binary is told to keep the payload and try again. This is to not lose metrics in cases like a license lapsing and then being renewed the next day. Requests with valid licenses will have their payloads forwarded to Thanos and the reply will be sent back to the egress binary so it can decide what to do with the payload.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;thanos-tenant&lt;/code&gt; HTTP header in the request to Thanos is set to the tenant ID derived from the customer license. Under the hood, Thanos stores each tenant&amp;rsquo;s data in a separate TSDB (time series database). This is great for addressing any concerns with mixing customer data, and it also means queries for a given tenant only need to search through the data for that tenant.&lt;/p&gt;
+&lt;p&gt;When the egress binary requests a whitelist and blacklist pair, it also includes a copy of the customer&amp;rsquo;s license. The ingress binary will check to see if a pair exists for the tenant and return it if so. If we haven&amp;rsquo;t set up a specific pair for a tenant, then a default is returned. The whitelist and blacklist pairs are just files on disk with deterministic names. Like many other places in this system, a cache here is used to avoid the cost of repeated lookups.&lt;/p&gt;
+&lt;h2 class="relative group"&gt;Thanos
+&lt;div id="thanos" class="anchor"&gt;&lt;/div&gt;
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+&lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#thanos" aria-label="Anchor"&gt;#&lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;
+&lt;p&gt;We&amp;rsquo;ve now seen how data arrives at Thanos, but so far I&amp;rsquo;ve abstracted Thanos away as a single entity. In reality, Thanos is a collection of processes that work together. Let&amp;rsquo;s zoom in on the Thanos box we&amp;rsquo;ve seen in the diagrams so far and look at what I actually set up.&lt;/p&gt;
+&lt;h3 class="relative group"&gt;Plumbing
+&lt;div id="plumbing" class="anchor"&gt;&lt;/div&gt;
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+&lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#plumbing" aria-label="Anchor"&gt;#&lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Metrics flow into Thanos"
+width="2182"
+height="1082"
+src="https://jamesrobb.ca/projects/metrics_pipeline/thanos_overview_hu_b0777b0b7ab4a562.png"
+srcset="https://jamesrobb.ca/projects/metrics_pipeline/thanos_overview_hu_b0777b0b7ab4a562.png 800w, https://jamesrobb.ca/projects/metrics_pipeline/thanos_overview_hu_ef31c8017e622a02.png 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/metrics_pipeline/thanos_overview.png"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Heimdall Ingress sends RWP payloads to the Thanos Router. The router is a lightweight and stateless process that distributes metrics to the Thanos Ingestors. It&amp;rsquo;s aware of the ingestors via its configuration file and uses a hashing algorithm to determine which ingestor to send any given metric to. As a side note, one should opt for the &lt;code&gt;ketama&lt;/code&gt; hashing algorithm as it&amp;rsquo;s a stable hashing algorithm and allows for simple horizontal scaling of Thanos Receivers.&lt;/p&gt;
+&lt;p&gt;The Thanos Ingestors are, in effect, small Prometheus servers. They each maintain a local TSDB and store metrics they receive from the Thanos Router. Every two hours each ingestor uploads a block of data for the last two hours into object storage (AWS S3 in our case). The routers and ingestors are actually the same Thanos process (&lt;code&gt;thanos receive&lt;/code&gt;), but take on different responsibilities based on their configuration. It is possible to have one process be both a router and an ingestor, but I chose to break things out into separate processes because the ingestors do significantly more work than the router and that&amp;rsquo;s where I will want to scale. Annoyingly, the &lt;a
+href="https://thanos.io/tip/components/receive.md/"
+target="_blank"
+&gt;documentation&lt;/a&gt; for &lt;code&gt;thanos receive&lt;/code&gt; does not make it clear at all (at least at the time of writing this) that one could make the process behave as an ingestor only, but I found a &lt;a
+href="https://thanos.io/blog/2023-11-20-life-of-a-sample-part-1/"
+target="_blank"
+&gt;blog post&lt;/a&gt; on the Thanos website that outlined how to do it.&lt;/p&gt;
+&lt;p&gt;The Thanos Compactor has two responsibilities: to compact blocks uploaded to object storage and to downsample data. How Prometheus blocks work is out of scope for what I want to discuss here, but in general you can assume fewer blocks means less storage used, quicker lookups, and better indices. Downsampling also plays an important role in performance. For example, if one is visualizing a metric over a whole month, it is very unlikely full resolution for that metric is needed - samples with one hour resolution usually do just as well as samples with one minute resolution.&lt;/p&gt;
+&lt;p&gt;Retrieving data from the object store is handled by the Thanos Store component. It pulls down the appropriate blocks from object storage to its local disk and executes the query against that data.&lt;/p&gt;
+&lt;p&gt;Queries for metrics first land at the Thanos Query component. The result set that Thanos Query sends back for a given query is the union of the result sets from applying that query to the data in each ingestor&amp;rsquo;s local TSDB, and the data in object storage (via Thanos Store). Remember that metrics are sent to different ingestors based on their hash value, so the data on all ingestors must be scanned to produce the correct result set.&lt;/p&gt;
+&lt;h3 class="relative group"&gt;Scalability and Performance
+&lt;div id="scalability-and-performance" class="anchor"&gt;&lt;/div&gt;
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+&lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#scalability-and-performance" aria-label="Anchor"&gt;#&lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;
+&lt;p&gt;The mothership is where all scalability concerns are. The customer-side components (Prometheus and Heimdall Egress) were able to handle the load of our internal Kubernetes cluster that has hundreds of instances running; a typical Yellowbrick deployment will have fewer than ten instances running.&lt;/p&gt;
+&lt;p&gt;To scale the write side of this system, we need to target the router and the ingestors. The ingestors would be the first that need to scale as they do significantly more work than the router. Thankfully, they can scale horizontally and even run on other virtual machines. The router would eventually need to scale horizontally too, but at a much slower pace than the ingestors since the router does so little work (relatively speaking). All of the back pressure in the system is here as well. Each Heimdall Egress binary out in the wild will only have a handful of parallel connections open to the mothership, and they will only send more data as they get back confirmations from Thanos (via Heimdall Ingress). This means the rate at which this system can ingest data will be limited by how well we scale the routers and ingestors, and how fast the ingestors&amp;rsquo; disks are.&lt;/p&gt;
+&lt;p&gt;Scaling on the read side is affected by how well the Thanos Store component scales, but also how the ingestors scale. Recall that the data we get back for a query comes from both the store component and the ingestors. The store component scales horizontally and can run on different virtual machines. There are a couple of broad ways to scale the store component (hashed vs replica), but we hadn&amp;rsquo;t hit the need for it, so I could only speculate on what would be most appropriate for this system. The read rate is then limited by:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The compute power of the ingestor and store components.&lt;/li&gt;
+&lt;li&gt;The disk speed of the ingestor and store components.&lt;/li&gt;
+&lt;li&gt;The bandwidth between the store components and the object storage.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We had no real concerns about the bandwidth between Thanos Store and object storage - the mothership is a virtual machine in AWS and we use their S3 service. The compute power and disk speed for the ingestor and store components can be practically scaled out by converting the mothership to be a collection of virtual machines, which presents no real technical challenges, we just haven&amp;rsquo;t needed to go that far yet.&lt;/p&gt;
+&lt;p&gt;The Thanos topology I presented above has so far worked very well for Yellowbrick. Data for thousands of instances is flowing in and engineers are able to observe all corresponding systems in real time. Neither CPU, memory, nor disk are overly taxed on the mothership, which is running on a mid-size virtual machine. This design should scale to meet the organization&amp;rsquo;s needs for years to come. If we were to scale to millions of tenants the system design would need to be reconsidered, but that&amp;rsquo;s a welcome problem of success. Our resources weren&amp;rsquo;t infinite, so we focused on something practical we could get going sooner rather than later, while still reasonably accommodating future growth.&lt;/p&gt;
+&lt;h2 class="relative group"&gt;Grafana
+&lt;div id="grafana" class="anchor"&gt;&lt;/div&gt;
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+&lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#grafana" aria-label="Anchor"&gt;#&lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;
+&lt;p&gt;The primary way we expected customers and engineers to interact with the system was via Grafana. The main point of this post is about the metrics pipeline itself, but I did want to touch on Grafana a bit as the dashboards are the most tangible result others would see of our work.&lt;/p&gt;
+&lt;p&gt;From the very start, we committed to having the dashboards our customers saw be first-class citizens - they needed to be useful and polished. We felt the best way to ensure this was to dogfood them. The dashboards we used internally for engineers, support staff, etc., were the same dashboards we shipped to our customers. To make the dashboards useful when querying across all of our tenants, I created a script that would modify each dashboard to have an extra Grafana variable (i.e., a dropdown at the top of the dashboard) to select the tenant we were interested in. I used a &lt;a
+href="https://pkg.go.dev/github.com/prometheus/prometheus/promql/parser"
+target="_blank"
+&gt;Golang library&lt;/a&gt; to parse the PromQL queries for each of the visualizations and add &lt;code&gt;tenant_id=&amp;quot;TENANT_OF_INTEREST&amp;quot;&lt;/code&gt; to each query - when this label is set Thanos will only scan the matching TSDB. Other than that, the internal and customer dashboards were functionally and visually equivalent.&lt;/p&gt;
+&lt;p&gt;Releasing the dashboards internally was a very rewarding experience. Very quickly I started to get bug reports, requests for new visualizations, and questions about how to add new metrics to the product. This told me others were getting value out of it right away - the best tools are the tools that actually get used.&lt;/p&gt;
+&lt;h2 class="relative group"&gt;Conclusion
+&lt;div id="conclusion" class="anchor"&gt;&lt;/div&gt;
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+&lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#conclusion" aria-label="Anchor"&gt;#&lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;
+&lt;p&gt;We set out to solve two broad problems:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Provide customers with measurable insight and observability into the product.&lt;/li&gt;
+&lt;li&gt;Capture health and diagnostic data for all Yellowbrick systems in near real-time.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To do that, we built an observability stack using Prometheus, Thanos, Grafana, and a pair of home-grown binaries called Heimdall. We kept resource overhead at customer sites low, and used battle-tested off-the-shelf software to get the project off the ground as quickly as possible. As a quick summary, the system we created:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Enforces licensing.&lt;/li&gt;
+&lt;li&gt;Allows us to dynamically select what metrics to collect per tenant.&lt;/li&gt;
+&lt;li&gt;Scales in a predictable way as load increases.&lt;/li&gt;
+&lt;li&gt;Keeps metrics data safe in failure conditions.&lt;/li&gt;
+&lt;li&gt;Provides both customers and engineers with a well-known interface for turning raw metrics into actionable insight.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We designed and built this system to scale with the company&amp;rsquo;s needs as we understood them at the time, and it has proven capable of doing so. Startups (and most companies) don&amp;rsquo;t have the luxury of building for every hypothetical future, so we focused on what we actually knew, and built something quickly (but without sacrificing quality).&lt;/p&gt;
+&lt;p&gt;It was a real pleasure to work on this project. I got to touch essentially every part of the core stack, interact with engineers and stakeholders across the whole company, and do some exciting greenfield work. In my opinion, it was one of the most interesting engineering projects happening in the company, and I&amp;rsquo;m thankful I got to be one of the driving forces moving it forward. For those of you that made it this far, thanks for reading!&lt;/p&gt;</content:encoded></item></channel></rss>

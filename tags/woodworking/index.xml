@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Woodworking on James Robb</title><link>https://jamesrobb.ca/tags/woodworking/</link><description>Recent content in Woodworking on James Robb</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>me@jamesrobb.ca (James Robb)</managingEditor><webMaster>me@jamesrobb.ca (James Robb)</webMaster><copyright>© 2026 James Robb</copyright><lastBuildDate>Sun, 27 Sep 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://jamesrobb.ca/tags/woodworking/index.xml" rel="self" type="application/rss+xml"/><item><title>Pine Shoe Rack</title><link>https://jamesrobb.ca/projects/pine_shoe_rack/</link><pubDate>Sun, 27 Sep 2026 00:00:00 +0000</pubDate><author>me@jamesrobb.ca (James Robb)</author><guid>https://jamesrobb.ca/projects/pine_shoe_rack/</guid><description/><content:encoded>&lt;p&gt;I&amp;rsquo;ve taken a bit of interest in woodworking in the last year or so. I&amp;rsquo;m not really sure why. Maybe working on a keyboard makes me romanticize the idea of working with my hands. Maybe it&amp;rsquo;s just the next natural progression of being a dad. Maybe it&amp;rsquo;s the algorithmic black hole of woodworking projects I seem to have fallen into. Likely a little of all three. Whatever the reason though, it felt like it was time to build something.&lt;/p&gt;
+&lt;p&gt;There is a space in my house that is perfect for a shoe rack, but I could not find one on the market that fit into the space and still allowed me to open the adjacent closet. If that&amp;rsquo;s not an excuse to build a shoe rack I&amp;rsquo;m not sure what is! Like any DIY post, let&amp;rsquo;s start with a picture of the final product:&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Finished shoe rack"
+width="2082"
+height="2400"
+src="https://jamesrobb.ca/projects/pine_shoe_rack/final_product_1_hu_99a42b7f8854837f.jpg"
+srcset="https://jamesrobb.ca/projects/pine_shoe_rack/final_product_1_hu_99a42b7f8854837f.jpg 800w, https://jamesrobb.ca/projects/pine_shoe_rack/final_product_1_hu_1e14e47a4eacb90d.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/pine_shoe_rack/final_product_1.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 class="relative group"&gt;The Design
+&lt;div id="the-design" class="anchor"&gt;&lt;/div&gt;
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+&lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#the-design" aria-label="Anchor"&gt;#&lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;
+&lt;p&gt;The space I had in mind for the shoe rack gave me ~80cm of clearance where I could place the shoe rack and still open the door on the nearby closet. I wanted a good amount of space for shoes so I decided on five shelves. There was a fuzzy image in my mind of what I wanted to build. I tried sketching it out on paper but ultimately decided to mock something up in &lt;a
+href="https://www.tinkercad.com"
+target="_blank"
+&gt;Tinkercad&lt;/a&gt; to get a clearer idea of what the final product would really look like. I came up with two variants.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Tinkercad Mocks"
+width="2400"
+height="1506"
+src="https://jamesrobb.ca/projects/pine_shoe_rack/tinkercad_mocks_hu_dc2d8c848e54191c.jpg"
+srcset="https://jamesrobb.ca/projects/pine_shoe_rack/tinkercad_mocks_hu_dc2d8c848e54191c.jpg 800w, https://jamesrobb.ca/projects/pine_shoe_rack/tinkercad_mocks_hu_cd656dc201ae5d51.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/pine_shoe_rack/tinkercad_mocks.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;The design on the left is obviously much easier to construct: one could assemble each shelf individually and then affix the legs to it. The design on the right would mean finding a way to glue up 25 slats to the sides all at the same time. Still, I liked the design on the right better, and I convinced myself I would enjoy the challenge.&lt;/p&gt;
+&lt;p&gt;The plan was conceptually simple:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Construct two identical sides.&lt;/li&gt;
+&lt;li&gt;Cut 25 slats to length.&lt;/li&gt;
+&lt;li&gt;Drill two holes in the ends of each slat for dowels.&lt;/li&gt;
+&lt;li&gt;Drill the corresponding 50 holes on each side of the shoe rack in exactly the right places.&lt;/li&gt;
+&lt;li&gt;Apply glue and clamps.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The actual execution was a bit painful both because of the chosen design, and because this was my first rodeo. There were a number of lessons I didn&amp;rsquo;t realize I was going to need to learn, which I&amp;rsquo;ll now get to impart on you, dear reader. I did have enough foresight though to know that I was likely going to make lots of mistakes, so instead of trying to source any fancy wood for this project, I took a trip to the local hardware store and bought some pre-planed construction lumber in roughly the dimensions I needed. The exact dimensions weren&amp;rsquo;t super important, I&amp;rsquo;d just adjust the design to compensate for them.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Planed lumber stacked in warehouse"
+width="2400"
+height="1800"
+src="https://jamesrobb.ca/projects/pine_shoe_rack/lumberyard_hu_8b75be886f6e1820.jpg"
+srcset="https://jamesrobb.ca/projects/pine_shoe_rack/lumberyard_hu_8b75be886f6e1820.jpg 800w, https://jamesrobb.ca/projects/pine_shoe_rack/lumberyard_hu_69885f644d869e5b.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/pine_shoe_rack/lumberyard.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;If memory serves me right I bought about 21 metres of 2x3cm, and 12 metres of 3x4cm. It worked out to ~12.000ISK (100USD). Things in Iceland are in general quite expensive, and building materials are no different. I had already spent as much on materials as a finished product from the local Ikea (though one from them would be a bit smaller).&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Lumber loaded into back of car"
+width="1800"
+height="2400"
+src="https://jamesrobb.ca/projects/pine_shoe_rack/lumber_in_car_hu_b3fcbe54d09094c1.jpg"
+srcset="https://jamesrobb.ca/projects/pine_shoe_rack/lumber_in_car_hu_b3fcbe54d09094c1.jpg 800w, https://jamesrobb.ca/projects/pine_shoe_rack/lumber_in_car_hu_b0fbc5d8553b8fb1.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/pine_shoe_rack/lumber_in_car.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 class="relative group"&gt;The Build
+&lt;div id="the-build" class="anchor"&gt;&lt;/div&gt;
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+&lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#the-build" aria-label="Anchor"&gt;#&lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;
+&lt;p&gt;Some weekends later when it was nice and sunny I pulled my mitre saw outside to start the cuts. I had bought the saw over the winter during some sale and was excited to finally put it to work.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Saw and vacuum setup outside for cutting"
+width="1351"
+height="2400"
+src="https://jamesrobb.ca/projects/pine_shoe_rack/saw_outside_hu_eca521ed77e948aa.jpg"
+srcset="https://jamesrobb.ca/projects/pine_shoe_rack/saw_outside_hu_eca521ed77e948aa.jpg 800w, https://jamesrobb.ca/projects/pine_shoe_rack/saw_outside_hu_ff70246cb26781d6.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/pine_shoe_rack/saw_outside.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;This is where I learned one of the first lessons: &lt;strong&gt;using your measuring tape to produce two identical cuts is damn near impossible&lt;/strong&gt;. The right way to get the exact same length is to use some sort of stop to butt the board up against. In my case I extended the left arm on my saw stand to be the exact length I needed and raised it just enough so it could act as the stop. I followed this process to make all of the 25 slats, the 4 legs, and the 10 pieces that sit in between the legs.&lt;/p&gt;
+&lt;p&gt;Next it was time to drill the holes required to assemble the sides of the shoe rack. I would drill two dowel holes into the end of each of the 10 smaller side pieces, and 10 holes into each leg. Then I&amp;rsquo;d apply glue, dowels, and clamps.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Drilling dowel holes into side smaller pieces"
+width="2400"
+height="1351"
+src="https://jamesrobb.ca/projects/pine_shoe_rack/dowel_holes_side_pieces_1_hu_d21b728ca730642c.jpg"
+srcset="https://jamesrobb.ca/projects/pine_shoe_rack/dowel_holes_side_pieces_1_hu_d21b728ca730642c.jpg 800w, https://jamesrobb.ca/projects/pine_shoe_rack/dowel_holes_side_pieces_1_hu_5d4e935937a1df81.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/pine_shoe_rack/dowel_holes_side_pieces_1.jpg"&gt;&lt;/figure&gt;
+&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Drilling dowel holes into legs"
+width="2400"
+height="1351"
+src="https://jamesrobb.ca/projects/pine_shoe_rack/dowel_holes_side_pieces_2_hu_ae013a76abe5b277.jpg"
+srcset="https://jamesrobb.ca/projects/pine_shoe_rack/dowel_holes_side_pieces_2_hu_ae013a76abe5b277.jpg 800w, https://jamesrobb.ca/projects/pine_shoe_rack/dowel_holes_side_pieces_2_hu_941184c91a5bc859.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/pine_shoe_rack/dowel_holes_side_pieces_2.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Drilling these holes I immediately learned some new lessons:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;No two pieces of timber you&amp;rsquo;ll pull off the shelf are exactly the same&lt;/strong&gt;. Sure, I got them to the same length, but they were all slightly twisted or cupped in their own unique way.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Finding the exact centre with a measuring tape is usually a fool&amp;rsquo;s errand&lt;/strong&gt;. It will often be the case that half of whatever you&amp;rsquo;re measuring isn&amp;rsquo;t a round number, so you&amp;rsquo;ll always be doing a bit of guesswork. You&amp;rsquo;re much better off with some basic jig.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Finding the exact centre isn&amp;rsquo;t always necessary&lt;/strong&gt;. Consider the holes I am drilling in the pictures above. It is not really so important that the holes were in the centre of the boards, what is important is that the holes have the exact same offset from some other face. The dowels would have still done their job even if slightly off centre, but if they don&amp;rsquo;t have the same offset, you won&amp;rsquo;t get a flat surface where the two boards meet (which is what happened to me, but I&amp;rsquo;ll come back to that later).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tear-out is hard to deal with&lt;/strong&gt;. Thankfully this didn&amp;rsquo;t matter so much for my project as the tear-out wouldn&amp;rsquo;t be visible. I still need to work on how to approach this myself, but my cleanest holes came from sharp bits (don&amp;rsquo;t use Temu bits, they are garbage), a steady hand, and going slow. I&amp;rsquo;ve already half-talked myself into getting a drill press.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Once all the holes were drilled I started filling them with glue and getting the dowels in.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Holes in legs with wooden dowels"
+width="2400"
+height="1351"
+src="https://jamesrobb.ca/projects/pine_shoe_rack/dowel_holes_side_pieces_3_hu_4d979bfc395368b7.jpg"
+srcset="https://jamesrobb.ca/projects/pine_shoe_rack/dowel_holes_side_pieces_3_hu_4d979bfc395368b7.jpg 800w, https://jamesrobb.ca/projects/pine_shoe_rack/dowel_holes_side_pieces_3_hu_43a60b1c83a3822b.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/pine_shoe_rack/dowel_holes_side_pieces_3.jpg"&gt;&lt;/figure&gt;
+&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Side pieces pushed onto one leg with glue and dowels exposed on other side"
+width="2400"
+height="1351"
+src="https://jamesrobb.ca/projects/pine_shoe_rack/dowel_holes_side_pieces_4_hu_30f3a01adecb5b0e.jpg"
+srcset="https://jamesrobb.ca/projects/pine_shoe_rack/dowel_holes_side_pieces_4_hu_30f3a01adecb5b0e.jpg 800w, https://jamesrobb.ca/projects/pine_shoe_rack/dowel_holes_side_pieces_4_hu_68b7796c90d9ab6e.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/pine_shoe_rack/dowel_holes_side_pieces_4.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Assembling the pieces was quite easy and took no real time at all. After all the pieces had been glued and pressed together I got everything into a set of clamps to cure.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Shoe rack sides clamped together and curing"
+width="1822"
+height="2400"
+src="https://jamesrobb.ca/projects/pine_shoe_rack/sides_clamped_hu_629d8959c59e6159.jpg"
+srcset="https://jamesrobb.ca/projects/pine_shoe_rack/sides_clamped_hu_629d8959c59e6159.jpg 800w, https://jamesrobb.ca/projects/pine_shoe_rack/sides_clamped_hu_5fed300308e40f6e.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/pine_shoe_rack/sides_clamped.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Now, because I hadn&amp;rsquo;t learned the offset-is-more-important-than-centre lesson, and because I didn&amp;rsquo;t find exact centre on each board, I needed to do a bit of planing to get the faces of assembled side-pieces level. I had never used a plane before, but I had watched plenty of short-form content on the subject, so I was essentially an expert. It is true what they say in these videos: &lt;strong&gt;planes rarely come sharp enough to start using out of the box&lt;/strong&gt;. After a bit of research and some practice I got the plane fairly sharp and was able to get things into a workable state.&lt;/p&gt;
+&lt;p&gt;Because some places where the side pieces met were high, the other sides were low. I didn&amp;rsquo;t think I was going to easily plane my way out of that problem, so later in the project I reached for some wood filler. At the very start I had hoped to stain this project, but after the mistakes piled up I decided I would just use wood filler and paint to cover it all up; the construction lumber didn&amp;rsquo;t stain very well anyways.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Side of shoe rack with plane and shavings"
+width="2400"
+height="1351"
+src="https://jamesrobb.ca/projects/pine_shoe_rack/plane_hu_24492cd566245e1f.jpg"
+srcset="https://jamesrobb.ca/projects/pine_shoe_rack/plane_hu_24492cd566245e1f.jpg 800w, https://jamesrobb.ca/projects/pine_shoe_rack/plane_hu_a710a75e2226ddf8.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/pine_shoe_rack/plane.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Assembled shoe rack sides"
+width="1587"
+height="2400"
+src="https://jamesrobb.ca/projects/pine_shoe_rack/sides_completed_no_filler_hu_e9fc9c42e43bcd45.jpg"
+srcset="https://jamesrobb.ca/projects/pine_shoe_rack/sides_completed_no_filler_hu_e9fc9c42e43bcd45.jpg 800w, https://jamesrobb.ca/projects/pine_shoe_rack/sides_completed_no_filler_hu_3cf7d194287b2c3d.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/pine_shoe_rack/sides_completed_no_filler.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;With the sides assembled it was time to get around to drilling the holes in the ends of the slats for the dowels. I thought for a while about how to do this relatively quickly and conducted a few failed experiments. Essentially, due to some of the learned lessons above (twisting, cupping, variations in size), trying to drill holes in the middle of the slats would result in slats that were not very level with each other in the final product.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s where one of my Temu purchases did come in handy. I bought a dowel jig from them that happened to be just the right size to drill two holes in the end of each slat at a constant offset. In general I would say buying from them is very much a &amp;ldquo;buyer beware&amp;rdquo; or &amp;ldquo;you get what you pay for&amp;rdquo; kind of situation, but for jigs and other hunks of aluminum it&amp;rsquo;s hard to beat the deals, especially from Iceland - most places charge an arm and a leg to ship something, but Temu sends it free if you buy some minimum amount.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Dowel jig next to slat off-cut with dowel holes drilled in it"
+width="2400"
+height="1351"
+src="https://jamesrobb.ca/projects/pine_shoe_rack/dowel_jig_1_hu_e6e49cb8020b3207.jpg"
+srcset="https://jamesrobb.ca/projects/pine_shoe_rack/dowel_jig_1_hu_e6e49cb8020b3207.jpg 800w, https://jamesrobb.ca/projects/pine_shoe_rack/dowel_jig_1_hu_fc5d22a22d2c0814.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/pine_shoe_rack/dowel_jig_1.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Dowel jig with slat off-cut mounted in it"
+width="1351"
+height="1540"
+src="https://jamesrobb.ca/projects/pine_shoe_rack/dowel_jig_2_hu_63bb680faa9e9129.jpg"
+srcset="https://jamesrobb.ca/projects/pine_shoe_rack/dowel_jig_2_hu_63bb680faa9e9129.jpg 800w, https://jamesrobb.ca/projects/pine_shoe_rack/dowel_jig_2_hu_74c80681d4f3ed53.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/pine_shoe_rack/dowel_jig_2.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Slats with holes drilled in them on floor"
+width="2400"
+height="1351"
+src="https://jamesrobb.ca/projects/pine_shoe_rack/slats_drilled_hu_c9bc5c421391e729.jpg"
+srcset="https://jamesrobb.ca/projects/pine_shoe_rack/slats_drilled_hu_c9bc5c421391e729.jpg 800w, https://jamesrobb.ca/projects/pine_shoe_rack/slats_drilled_hu_8f06f35a7ec0b93e.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/pine_shoe_rack/slats_drilled.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I marked all the slats with what level they belonged to and what position on said level. In hindsight this was probably overkill, but I had made a few mistakes with the dowel jig and I wanted to make sure that the holes I drilled in the side pieces for the slats would really line up.&lt;/p&gt;
+&lt;p&gt;To determine where to drill the holes for the slats in the side pieces I used dowel positioning pins. They are little metal plugs with a point on the end that fit into dowel holes. One places the positioning pins into the dowel holes, then presses the piece up against the other surface to leave a mark so one knows where to drill.&lt;/p&gt;
+&lt;p&gt;I also built a simple jig to help me with this. It allowed me to know the top of each slat would be level with all the other slats on the same level. One of the biggest lessons of this whole experience was that &lt;strong&gt;jigs are awesome&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Close-up of positioning pins and marks they leave"
+width="2400"
+height="1351"
+src="https://jamesrobb.ca/projects/pine_shoe_rack/positioning_pins_1_hu_6112d21ca41448b5.jpg"
+srcset="https://jamesrobb.ca/projects/pine_shoe_rack/positioning_pins_1_hu_6112d21ca41448b5.jpg 800w, https://jamesrobb.ca/projects/pine_shoe_rack/positioning_pins_1_hu_a02ad531c8db5e3e.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/pine_shoe_rack/positioning_pins_1.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Jig clamped onto one side of shoe rack with positioning pins"
+width="2400"
+height="1351"
+src="https://jamesrobb.ca/projects/pine_shoe_rack/positioning_pins_2_hu_f1538d56567ff2f2.jpg"
+srcset="https://jamesrobb.ca/projects/pine_shoe_rack/positioning_pins_2_hu_f1538d56567ff2f2.jpg 800w, https://jamesrobb.ca/projects/pine_shoe_rack/positioning_pins_2_hu_c7e2a9eaddbea91e.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/pine_shoe_rack/positioning_pins_2.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;With all the holes marked I used my portable drill guide to drill straight-ish holes (I learned while doing this that my drill has a small wobble). There was a fair bit of tear-out, but again thankfully it would all be hidden. There was also some blowout that I fixed up later with some wood glue and wood filler.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Blowout on a dowel hole"
+width="2400"
+height="1351"
+src="https://jamesrobb.ca/projects/pine_shoe_rack/blowout_1_hu_5fd894e8c37da89a.jpg"
+srcset="https://jamesrobb.ca/projects/pine_shoe_rack/blowout_1_hu_5fd894e8c37da89a.jpg 800w, https://jamesrobb.ca/projects/pine_shoe_rack/blowout_1_hu_1801d150d0abb1ab.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/pine_shoe_rack/blowout_1.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I didn&amp;rsquo;t capture any photos of the process, but now it was time for a dry fit. This was definitely the hardest part of the assembly (so far). Getting all of the slats onto one side was easy, lining up 25 imperfect slats while pressing the other side on was not. I did get it to work eventually, but it was painful enough that I would not pursue this particular design again, nor would I recommend others try.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Dry fit of all the parts"
+width="2068"
+height="2400"
+src="https://jamesrobb.ca/projects/pine_shoe_rack/dryfit_hu_872a0a4b1272d684.jpg"
+srcset="https://jamesrobb.ca/projects/pine_shoe_rack/dryfit_hu_872a0a4b1272d684.jpg 800w, https://jamesrobb.ca/projects/pine_shoe_rack/dryfit_hu_1da603c6362ef7f6.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/pine_shoe_rack/dryfit.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Being able to see the final product, even if just a dry fit, was really quite validating. There was a fair bit of self-doubt after all the mistakes made up to this point. I loved the way it looked though and was really excited to get it finished.&lt;/p&gt;
+&lt;p&gt;To hide the various imperfections and to prep for paint I used a generous amount of wood filler and gave everything a good sanding with 120 grit sandpaper.&lt;/p&gt;
+&lt;p&gt;Then came the actual assembly. I had to glue up 100 dowels and try to repeat the miracle process of getting all the slats lined up before the glue started to set. For this I brought in a buddy. And, to give us more time to work, I let the glue sit outside all day to cool off and extend the drying time. Once we had it all together into the clamps it went to sit for a day.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Sides with wood filler applied and sanded"
+width="1866"
+height="2400"
+src="https://jamesrobb.ca/projects/pine_shoe_rack/sides_sanded_hu_b682a23666ae4eec.jpg"
+srcset="https://jamesrobb.ca/projects/pine_shoe_rack/sides_sanded_hu_b682a23666ae4eec.jpg 800w, https://jamesrobb.ca/projects/pine_shoe_rack/sides_sanded_hu_4cb6ba35f5ed5672.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/pine_shoe_rack/sides_sanded.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Fully assembled shoe rack glued up and curing in clamps"
+width="1787"
+height="2400"
+src="https://jamesrobb.ca/projects/pine_shoe_rack/drying_with_clamps_hu_adf5a060c5064039.jpg"
+srcset="https://jamesrobb.ca/projects/pine_shoe_rack/drying_with_clamps_hu_adf5a060c5064039.jpg 800w, https://jamesrobb.ca/projects/pine_shoe_rack/drying_with_clamps_hu_332105b0db1f40b4.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/pine_shoe_rack/drying_with_clamps.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Not pictured are some final bits of wood filler and sanding I did to get it into the best shape I could before painting. And speaking of paint!&lt;/p&gt;
+&lt;h2 class="relative group"&gt;Painting
+&lt;div id="painting" class="anchor"&gt;&lt;/div&gt;
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+&lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#painting" aria-label="Anchor"&gt;#&lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;
+&lt;p&gt;My original plan for painting this was to buy a DIY-grade paint gun (and learn to use it) so I could get a really nice finish on this. With all the slats I imagine it would have also been a lot less tedious than a brush and a roller. However, after dropping ~12.000ISK (100USD) on primer and paint I decided I didn&amp;rsquo;t want to spend any more money on this particular project, so a brush and roller it was!&lt;/p&gt;
+&lt;p&gt;I applied just a single coat of primer and three coats of paint. The surface was pretty rough after the primer so before applying the paint I gave everything a light sanding with 120 grit.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Primer applied to shoe rack"
+width="2400"
+height="1350"
+src="https://jamesrobb.ca/projects/pine_shoe_rack/primed_1_hu_d42ded1a8818aa21.jpg"
+srcset="https://jamesrobb.ca/projects/pine_shoe_rack/primed_1_hu_d42ded1a8818aa21.jpg 800w, https://jamesrobb.ca/projects/pine_shoe_rack/primed_1_hu_ed4ef51d9b98f512.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/pine_shoe_rack/primed_1.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Three coats of green paint applied to shoe rack"
+width="1779"
+height="2400"
+src="https://jamesrobb.ca/projects/pine_shoe_rack/painted_1_hu_15fe181b80ef786f.jpg"
+srcset="https://jamesrobb.ca/projects/pine_shoe_rack/painted_1_hu_15fe181b80ef786f.jpg 800w, https://jamesrobb.ca/projects/pine_shoe_rack/painted_1_hu_fd61124640c2f888.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/pine_shoe_rack/painted_1.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I had hoped the colour I picked out would be a bit more of a mossy green, but I still quite liked the result.&lt;/p&gt;
+&lt;p&gt;Like most things done with a roller and brush, it was difficult to make sure I had a perfect surface of paint everywhere. The imperfections were generally small and few though, and give me something to improve on next time. Success in my opinion!&lt;/p&gt;
+&lt;h2 class="relative group"&gt;Summary
+&lt;div id="summary" class="anchor"&gt;&lt;/div&gt;
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+&lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#summary" aria-label="Anchor"&gt;#&lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;
+&lt;p&gt;I made a cute and functional shoe rack out of construction lumber. It was challenging (which was one of the reasons I did it), but I had a lot of fun and learned a number of lessons along the way.&lt;/p&gt;
+&lt;p&gt;The build cost was not great. Even if you assume I got all of my tools for free, this was still more than one would pay for a ready-made item from Ikea, Jysk, or similar stores. Saving money wasn&amp;rsquo;t really the point, though. I did it because I like building things, and I wanted a shoe rack for a particular space.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m really looking forward to the next build and being able to apply all the lessons I learned.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s one more shot of the final product, with evidence that I have ample room to open the adjacent closet.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Completed shoe rack demonstrating it left ample room to open closet door"
+width="1593"
+height="2400"
+src="https://jamesrobb.ca/projects/pine_shoe_rack/final_product_2_hu_c057be92bd9a1f4e.jpg"
+srcset="https://jamesrobb.ca/projects/pine_shoe_rack/final_product_2_hu_c057be92bd9a1f4e.jpg 800w, https://jamesrobb.ca/projects/pine_shoe_rack/final_product_2_hu_2965bed102bf91db.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/pine_shoe_rack/final_product_2.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;</content:encoded><media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://jamesrobb.ca/projects/pine_shoe_rack/featured.jpg"/></item></channel></rss>

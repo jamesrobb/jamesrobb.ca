@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Icelandic on James Robb</title><link>https://jamesrobb.ca/tags/icelandic/</link><description>Recent content in Icelandic on James Robb</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>me@jamesrobb.ca (James Robb)</managingEditor><webMaster>me@jamesrobb.ca (James Robb)</webMaster><copyright>© 2026 James Robb</copyright><lastBuildDate>Thu, 01 Jan 2015 00:00:00 +0000</lastBuildDate><atom:link href="https://jamesrobb.ca/tags/icelandic/index.xml" rel="self" type="application/rss+xml"/><item><title>Icelandic Word Clock</title><link>https://jamesrobb.ca/projects/icelandic_word_clock/</link><pubDate>Thu, 01 Jan 2015 00:00:00 +0000</pubDate><author>me@jamesrobb.ca (James Robb)</author><guid>https://jamesrobb.ca/projects/icelandic_word_clock/</guid><description/><content:encoded>
+&lt;h2 class="relative group"&gt;Introduction
+&lt;div id="introduction" class="anchor"&gt;&lt;/div&gt;
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+&lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#introduction" aria-label="Anchor"&gt;#&lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;
+&lt;p&gt;I built a word clock in the Icelandic Language as a Christmas gift for my wife. I had a ton of fun building it and learned a lot along the way. It was also featured in the &lt;a
+href="https://www.mbl.is/frettir/innlent/2014/12/29/synir_timann_med_ordum_og_ljosum/"
+target="_blank"
+&gt;local paper&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Finished word clock"
+width="1504"
+height="1000"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/01_hu_503a2613289353ce.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/01_hu_503a2613289353ce.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/01_hu_b060bcc25d9709b6.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/01.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;This is the final product. The clock reads &amp;ldquo;klukkan er fimmtán mínútur yfir þrjú&amp;rdquo; which literally translates to &amp;ldquo;the clock is fifteen minutes over three&amp;rdquo; (or said as a native English speaker might &amp;ldquo;the time is fifteen minutes past three&amp;rdquo;). The clock also shows a special birthday message on my wife&amp;rsquo;s birthday - keep reading to see that in action!&lt;/p&gt;
+&lt;p&gt;The design was largely based on a &lt;a
+href="https://www.reddit.com/r/DIY/comments/2ao9yt/i_built_this_word_clock_for_my_brother_and_his/"
+target="_blank"
+&gt;reddit&lt;/a&gt; post I saw. While working on the project I had contacted the poster to ask why he had chosen to use two Arduinos. Turns out he was having trouble controlling both the lights and interfacing with the RTC (real-time clock) module. After a bit of chatting we were able to get his design down to just one Arduino.&lt;/p&gt;
+&lt;p&gt;I used an Arduino Uno and a breadboard to construct the initial clock. Since then, I have improved upon the design and used EagleCAD to design a custom PCB. In this post I will go through my initial design of the &lt;a
+href="#breadboard-version"&gt;breadboard version&lt;/a&gt; and then share some pictures and details about the &lt;a
+href="#pcb-version"&gt;PCB version&lt;/a&gt;. All the code (for both versions) is available on &lt;a href="https://github.com/jamesrobb/icelandic_bday_word_clock"&gt;Github &lt;span class="iconwrapper"&gt;
+&lt;span class="relative inline-block align-text-bottom icon"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"&gt;&lt;path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/&gt;&lt;/svg&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 class="relative group"&gt;Breadboard Version
+&lt;div id="breadboard-version" class="anchor"&gt;&lt;/div&gt;
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+&lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#breadboard-version" aria-label="Anchor"&gt;#&lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Laser cutter program loaded with face of word clock"
+width="1504"
+height="1000"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/02-0_hu_70214c0f6c446065.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/02-0_hu_70214c0f6c446065.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/02-0_hu_592b752dc9d7f562.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/02-0.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I started the project by laying out the letters for the clock in Adobe Illustrator. I was able to export an SVG from there and load it into the program that drives the laser cutter. I had never cut anything out with a laser cutter previously but a friend of a friend at the University of Iceland very generously donated his time, expertise, and access to an actual laser cutter to the project.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Laser cutter cutting an X into a piece of wood"
+width="1504"
+height="1000"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/02-1_hu_da1a791c4043543c.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/02-1_hu_da1a791c4043543c.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/02-1_hu_8e00508466a57860.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/02-1.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;We went through a few pieces of wood before getting the settings right. We had to balance the intensity of the laser, the speed at which it moved, and the thickness of the wood. If the wood was too thick we tended to set it on fire and couldn&amp;rsquo;t get a nice finish, but if the laser moved too quickly or wasn&amp;rsquo;t at a high enough intensity then we wouldn&amp;rsquo;t consistently cut through the wood in all places we wanted to.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Laser cutter cutting an X into a piece of wood"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/02-2_hu_d126845ba746323e.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/02-2_hu_d126845ba746323e.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/02-2_hu_8ca6091ff6ea110f.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/02-2.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Once we get the settings right it only took a quick sanding to get the face of the clock looking great. Not seen in this photo, but I did eventually stain the face with a wood stain from the local hardware store.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Wood panel with LEDs mounted and resistors attached"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/03_hu_a5a8640d255020b9.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/03_hu_a5a8640d255020b9.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/03_hu_373e83fda7044574.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/03.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;On the left is the wood panel I used to mount all of the LEDs. I had also cut this out with a laser cutter since I had access to it, but it could have just as easily been done with a drill and a bit of patience.&lt;/p&gt;
+&lt;p&gt;Each LED has a current limiting resistor. In theory it would have been possible to use one current limiting resistor, but if one does the math it would have needed to be able to dissipate more heat than made sense for a project like this.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Circuit board mounted on back of LED panel"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/06_hu_186ded11628d8b9d.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/06_hu_186ded11628d8b9d.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/06_hu_417bf19192714cc0.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/06.jpeg"&gt;&lt;/figure&gt;
+&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Circuit board mounted on back of LED panel (alternate angle)"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/07_hu_fc94fb42e0bcaa7f.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/07_hu_fc94fb42e0bcaa7f.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/07_hu_1056600f999b0c70.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/07.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Here I have the &amp;ldquo;brain&amp;rdquo; board mounted on the back of the LED panel. It consists of a few components:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The Arduino does all the logic. It will change what words are illuminated, what button presses do when setting the time, etc.&lt;/li&gt;
+&lt;li&gt;The circular bit is an RTC module and keeps track of the time (even when the clock is unplugged). The Arduino&amp;rsquo;s internal clock can drift minutes per day (depending on the quality of the Arduino).&lt;/li&gt;
+&lt;li&gt;The black DIPs are three pairs of shift registers and transistor arrays (located next to each other horizontally). The shift registers are used to expand the number of output pins I have access to (I use one pin per word). The transistor arrays are controlled by the shift registers and drive the LEDs because the shift registers can&amp;rsquo;t reliably handle the current required to power the LEDs directly.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Black acrylic gasket for LEDs"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/04_hu_b531cabc1f1f4311.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/04_hu_b531cabc1f1f4311.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/04_hu_4dfa9ac2749d6ae9.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/04.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I needed a gasket to sit between the LED mounting panel and the face of the clock so that when one word lit up the light didn&amp;rsquo;t bleed into the surrounding letters. I had a local shop cut out a gasket from a thick piece of black acrylic but I was concerned light would still make its way between the acrylic and the LED panel so I tried to use some sticky tack. The sticky tack was not a good solution as it was just too difficult to get a thin and consistent layer around all the words. I wound up using some automotive gasket maker which worked well but I think it was overkill. I found a much better solution which I&amp;rsquo;ll show later in the section about the &lt;a
+href="#pcb-version"&gt;PCB version&lt;/a&gt; of the clock.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Black acrylic gasket for fitted with LED diffusers"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/05_hu_103fed8be4c98fe4.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/05_hu_103fed8be4c98fe4.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/05_hu_c69b13b2639df0f8.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/05.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;For LED diffusers I had the same shop cut out the appropriate shapes from a thinner piece of white acrylic and held them in place with glue. This was insanely time consuming and not a solution I would recommend - what I came up with for the PCB version was much less time consuming (and much cheaper).&lt;/p&gt;
+&lt;video autoplay loop muted playsinline&gt;
+&lt;source src="tilhamingju.mp4" type="video/mp4"&gt;
+&lt;/video&gt;
+&lt;p&gt;Getting to this point was a great feeling - I could finally get a real peek at what the final product would look like.&lt;/p&gt;
+&lt;p&gt;Here I have the birthday message &amp;ldquo;til hamingju kata&amp;rdquo; displayed which just means &amp;ldquo;happy birthday kata&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Wooden frame the LED panel will fit into"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/10_hu_c9feda503dd9e0fe.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/10_hu_c9feda503dd9e0fe.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/10_hu_7b93d74927abdf58.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/10.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Next was the frame. This is something I outsourced as well as I just didn&amp;rsquo;t have the tools or space for it, but something I would like to do myself in the future. It&amp;rsquo;s not very complicated, just a very thick picture frame with a notch in it for the LED panel and face to slip into. There is also a small notch for the back of the clock to slip into.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Back of fully assembled clock"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/11_hu_972ab428fd0f7b17.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/11_hu_972ab428fd0f7b17.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/11_hu_c96243bba6b803c1.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/11.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Like the reddit post I followed I chose to use an translucent acrylic panel for the back of the clock; I think it&amp;rsquo;s really cool to be able to see the insides. If one looks very close they can see the buttons used to set the time wired into the right side of the frame (as seen from the back). There is a mode button and an increment button. The mode button flips between year/month/day/hour/minute (and a birthday demo mode) and the increment button changes the values.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Front of fully assembled clock"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/12_hu_a6581201794382e0.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/12_hu_a6581201794382e0.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/12_hu_a3d870075d4c18b3.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/12.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;The final product as seen from the front one more time. My wife loved it and it was just a blast to build.&lt;/p&gt;
+&lt;p&gt;Now, onto the PCB version where I incorporated some of the lessons learned building this version.&lt;/p&gt;
+&lt;h2 class="relative group"&gt;PCB Version
+&lt;div id="pcb-version" class="anchor"&gt;&lt;/div&gt;
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+&lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#pcb-version" aria-label="Anchor"&gt;#&lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Black PCB with SMD LEDs soldered onto it"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/13_hu_88a92384fe406792.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/13_hu_88a92384fe406792.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/13_hu_7e286ddccfac8e39.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/13.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I used EagleCAD to design a custom PCB for this version of the clock. Here I used individually addressable LEDs so now I could control each letter instead of one word at a time, and I could change the colour of each letter instead of just the &amp;ldquo;happy birthday&amp;rdquo; letters. I soldered on all of the SMD LEDs by hand which was time consuming and error prone, but I managed to do it without damaging any of the pads.&lt;/p&gt;
+&lt;p&gt;If I ever made a third version I would make the clock consist of many smaller PCBs (e.g. one for each row) instead of one big board. There are a few reasons I think this would be better:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I could get a better price on each PCB as I would be ordering more units.&lt;/li&gt;
+&lt;li&gt;When one board was inevitably bad it would mean less waste as it&amp;rsquo;s just a row that would need to be tossed.&lt;/li&gt;
+&lt;li&gt;The solder stencil would be cheaper and I could get away with a relatively small oven.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Black PCB with SMD LEDs soldered onto it"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/17_hu_e2d8bbe179ec13bf.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/17_hu_e2d8bbe179ec13bf.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/17_hu_c36ac55b01589819.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/17.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;The &amp;ldquo;brain&amp;rdquo; is essentially still just an Arduino. I created a circuit on the back of the PCB for a very simple Arduino and flashed the Arduino bootloader to it. With that I could upload standard Arduino sketches to it. Like the LEDs, all hand soldered!&lt;/p&gt;
+&lt;p&gt;The LEDs I chose use a one-wire protocol and so I only needed one output pin from the embedded Arduino to control all of the LEDs. This meant that I didn&amp;rsquo;t need the shift registers nor the transistor arrays. The downside is that the addressable LEDs were significantly more expensive than just plan white LEDs.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Cork gaskets for LEDs with diffuser"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/14_hu_ff5836ee37a09f60.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/14_hu_ff5836ee37a09f60.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/14_hu_c2ee3723ed9cfffd.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/14.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I simplified the design of the gaskets greatly this time around by using cork. It was cheap, easy to cut, and slightly compressible so I could get a very good seal but pressing all the layers together tight before slipping them into the frame.&lt;/p&gt;
+&lt;p&gt;The diffuser is also much simpler here. Rather than cutting out separate pieces of acrylic I found a plastic film from 3M that is cheap, translucent, and has an adhesive on one side. It doesn&amp;rsquo;t have the shine to it that acrylic does but I found that at a normal viewing distance one could not tell the difference between the plastic film and the white acrylic.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Front of fully assembled PCB version of the clock"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/18_hu_c479e4d535347c1c.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/18_hu_c479e4d535347c1c.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/18_hu_57bcc5043c125f3d.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/18.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;This is the final product, which looks pretty much the same as the breadboard version when viewed from the front. I sold this particular clock to someone who lives in the north of Iceland (whose significant other is named Sigrún).&lt;/p&gt;
+&lt;p&gt;Thanks for reading!&lt;/p&gt;</content:encoded></item></channel></rss>

@@ -1,0 +1,840 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Electronics on James Robb</title><link>https://jamesrobb.ca/tags/electronics/</link><description>Recent content in Electronics on James Robb</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>me@jamesrobb.ca (James Robb)</managingEditor><webMaster>me@jamesrobb.ca (James Robb)</webMaster><copyright>© 2026 James Robb</copyright><lastBuildDate>Sun, 31 May 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://jamesrobb.ca/tags/electronics/index.xml" rel="self" type="application/rss+xml"/><item><title>In The Heat of The Moment: Samsung Tablet Data Extraction</title><link>https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/</link><pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate><author>me@jamesrobb.ca (James Robb)</author><guid>https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/</guid><description/><content:encoded>&lt;p&gt;While visiting a friend recently he mentioned that he dropped his tablet and hasn&amp;rsquo;t been able to get it to turn on since. As it usually goes in such situations, there were no backups to speak of. The tablet was his daily driver and held a bunch of writing and photos that he wanted to recover, if possible. Not being a techy himself, and hesitant to throw hundreds of dollars at repair services that might yield nothing, he was glad when I offered to take a look. I told him that I couldn&amp;rsquo;t promise anything, and I could very well destroy what might be an entirely repairable tablet. Knowing the risks, he gave me the green light, as it would likely just serve as a brick otherwise.&lt;/p&gt;
+&lt;h2 class="relative group"&gt;Symptoms
+&lt;div id="symptoms" class="anchor"&gt;&lt;/div&gt;
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+&lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#symptoms" aria-label="Anchor"&gt;#&lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;
+&lt;p&gt;The tablet in question is a Samsung Galaxy Tab S7. When I got it home the battery was stone dead. I plugged it in until the charge-level reached 10% and then tried to turn it on. It was stuck in a boot loop: I&amp;rsquo;d see the Samsung splash screen for a few seconds, then screen would show all black and flicker (but not turn off), and finally after ten seconds or so the system would reboot.&lt;/p&gt;
+&lt;p&gt;I wasn&amp;rsquo;t really sure what was wrong, so I thought I&amp;rsquo;d do a visual inspection.&lt;/p&gt;
+&lt;h2 class="relative group"&gt;Initial Inspection
+&lt;div id="initial-inspection" class="anchor"&gt;&lt;/div&gt;
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+&lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#initial-inspection" aria-label="Anchor"&gt;#&lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;
+&lt;p&gt;I opened up the tablet to take a look. It wasn&amp;rsquo;t a particularly hard task and there are plenty of videos online that demonstrate it. Briefly, one uses a blowdryer to heat up the edges of the screen so the adhesive loosens, and then a suction cup and a plastic wedge to separate the screen from the body.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Tablet with screen removed"
+width="971"
+height="1295"
+src="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/tablet_open_hu_a6f83337328c5167.jpg"
+srcset="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/tablet_open_hu_a6f83337328c5167.jpg 800w, https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/tablet_open.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/tablet_open.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I could not see anything immediately wrong with the tablet once I had it open, but that wasn&amp;rsquo;t super surprising either. I didn&amp;rsquo;t have much to go on, so the next thing I thought I&amp;rsquo;d try was to disconnect the battery and see if I could get the tablet to boot just using an external power source.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Battery ribbon cable disconnected"
+width="971"
+height="1295"
+src="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/battery_disconnected_hu_7dae6da0ab9a8c1a.jpg"
+srcset="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/battery_disconnected_hu_7dae6da0ab9a8c1a.jpg 800w, https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/battery_disconnected.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/battery_disconnected.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;At this point I was being lazy and trying to avoid removing all the plastic shielding. I was able to disconnect the ribbon cable, plugin an external power source, and still the same boot loop. I did a bit of research and the internet seemed to suggest that the absence of a battery would cause a boot loop, so what I had done so far had unfortunately revealed no new information.&lt;/p&gt;
+&lt;h2 class="relative group"&gt;Battery Bypass
+&lt;div id="battery-bypass" class="anchor"&gt;&lt;/div&gt;
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+&lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#battery-bypass" aria-label="Anchor"&gt;#&lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;
+&lt;p&gt;The next thing I wanted to try was bypassing the battery altogether. Given the system apparently needed to have a working battery, but I had no replacement battery to play with, I opted to harvest the small PCB the battery was connected to and drive it with a bench power supply.&lt;/p&gt;
+&lt;p&gt;To start on this I needed to stop being lazy and remove all the plastic shielding. This means I got to break out &lt;em&gt;the bit set&lt;/em&gt; (ooooo aaaah).&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="The bit set"
+width="971"
+height="1295"
+src="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/bits_hu_744d841534ad4ae6.jpg"
+srcset="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/bits_hu_744d841534ad4ae6.jpg 800w, https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/bits.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/bits.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;After removing something like thirty or forty tiny screws I was at the point I could pull the battery out. I used the blowdryer again to loosen the adhesive and I pried it out with the help of some plastic wedges. Using my skills as a professional dumbass and a pair of scissors, I was able to separate the battery from its PCB (which has the ribbon cable that attached to the motherboard).&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Battery without PCB"
+width="2587"
+height="1940"
+src="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/battery_hu_dac321f83e1d089f.jpg"
+srcset="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/battery_hu_dac321f83e1d089f.jpg 800w, https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/battery_hu_f407e4bdbfde5a86.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/battery.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Battery PCB with ribbon cable"
+width="1727"
+height="1295"
+src="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/battery_board_hu_1e81da05b5f40f21.jpg"
+srcset="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/battery_board_hu_1e81da05b5f40f21.jpg 800w, https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/battery_board_hu_58d3de5a3193c040.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/battery_board.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;In the second photo above you can see where the battery was glued down, and alligator clips running from a bench power supply hooked up to the contacts where the battery was previously connected.&lt;/p&gt;
+&lt;p&gt;With that all done I set the bench power supply to 3.8 volts and tried to get the tablet to start.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Boot loop with bench power supply"
+width="971"
+height="1295"
+src="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/boot_loop_hu_eb6950154e515dca.jpg"
+srcset="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/boot_loop_hu_eb6950154e515dca.jpg 800w, https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/boot_loop.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/boot_loop.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I was now getting a bit further. Sometimes when I would turn the tablet on I could get to the login screen, but most times not (just the same old boot loop instead). So it looks like the battery was an issue, but not the only issue.&lt;/p&gt;
+&lt;p&gt;On the few occasions I could actually get to the login screen it would freeze and become unresponsive within ten or so seconds. I noticed that I tended to get further through the startup process when I left the tablet alone for a few hours. After thinking about it for a while I wondered if the drop had caused a fracture in a solder joint, and the heat generated while the tablet was running caused just enough expansion to cause the system to fail shortly after startup.&lt;/p&gt;
+&lt;p&gt;We now move onto the part where in hindsight I got much braver than I probably should have.&lt;/p&gt;
+&lt;h2 class="relative group"&gt;The Heat Gun
+&lt;div id="the-heat-gun" class="anchor"&gt;&lt;/div&gt;
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+&lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#the-heat-gun" aria-label="Anchor"&gt;#&lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;
+&lt;p&gt;I do not own a reflow station nor a small toaster oven for baking PCBs. I&amp;rsquo;d like such a small oven, but they are weirdly difficult to come by in Iceland, and I&amp;rsquo;ve never needed one badly enough that the shipping would be worth it. I do own a heat gun though!&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Heat gun"
+width="1727"
+height="1295"
+src="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/heat_gun_hu_895c33f291d80b73.jpg"
+srcset="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/heat_gun_hu_895c33f291d80b73.jpg 800w, https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/heat_gun_hu_58cf2fddd20dfe0a.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/heat_gun.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;This was another moment where I truly shined as a professional dumbass. I really do not recommend anyone try this, but I was out of ideas and the owner of the tablet had already written it off, so there was little to lose.&lt;/p&gt;
+&lt;p&gt;The plan was to heat up the SoC enough that any solder joints would heal, but not so hot as to destroy the chip. To accomplish this I used the very scientific method of applying heat for a few seconds, then removing it for a few, and repeating until I was satisfied the board had gotten hot enough. I did however try to protect the rest of the board with some aluminum foil.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Aluminum foil shield over tablet motherboard"
+width="1727"
+height="1295"
+src="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/foil_shield_hu_d704aefae2a40430.jpg"
+srcset="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/foil_shield_hu_d704aefae2a40430.jpg 800w, https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/foil_shield_hu_15a9f41310b0bd4e.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/foil_shield.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;With the SoC cooked medium-rare, I re-installed the tablet&amp;rsquo;s motherboard and tried to boot the system again.&lt;/p&gt;
+&lt;h2 class="relative group"&gt;We&amp;rsquo;re In
+&lt;div id="were-in" class="anchor"&gt;&lt;/div&gt;
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+&lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#were-in" aria-label="Anchor"&gt;#&lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;
+&lt;p&gt;To my amazement, the tablet actually booted and did not freeze.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Tablet running and on home screen"
+width="4096"
+height="3072"
+src="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/we_are_in_hu_d03e0a400d5a8fd1.jpg"
+srcset="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/we_are_in_hu_d03e0a400d5a8fd1.jpg 800w, https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/we_are_in_hu_ecb8691d71fb2380.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/heat_of_the_moment_samsung_tablet_data_extraction/we_are_in.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I really wanted to do the hacker thing and exclaim &amp;ldquo;I&amp;rsquo;m in!&amp;rdquo;, but after seeing the wallpaper all I could think was &amp;ldquo;&lt;a
+href="https://www.youtube.com/watch?v=U06jlgpMtQs&amp;amp;t=4s"
+target="_blank"
+&gt;we&amp;rsquo;re in&lt;/a&gt;&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;From this point it was pretty simple to get his data off. In the past I had always used Windows or Linux to pull data off my android devices - the file managers worked with android out of the box. This time I was using MacOS and so I gave &lt;a
+href="https://openmtp.ganeshrvel.com/"
+target="_blank"
+&gt;OpenMTP&lt;/a&gt; a try. It did the trick, but it sure would be nice if Finder just worked with Android!&lt;/p&gt;
+&lt;p&gt;For those that got this far, thanks for reading! This was a fun learning experience where I got to see being a bit braver-than-usual pay off.&lt;/p&gt;
+&lt;p&gt;Also, please don&amp;rsquo;t use your heat gun for this. I got lucky - you are more likely than not to melt whatever you&amp;rsquo;re pointing it at.&lt;/p&gt;</content:encoded></item><item><title>Auto-Dimming WiFi-Enabled Digital Picture Frame</title><link>https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/</link><pubDate>Wed, 20 Dec 2017 00:00:00 +0000</pubDate><author>me@jamesrobb.ca (James Robb)</author><guid>https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/</guid><description/><content:encoded>&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Finished digital picture frame"
+width="3840"
+height="2160"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/01_hu_7bfbc0f269792670.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/01_hu_7bfbc0f269792670.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/01_hu_fa737f7042becb00.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/01.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s start with the final product! This is a digital picture frame I built (with my classmate Gunnar) for our Embedded Systems and IoT course at Reykjavik University. It&amp;rsquo;s also going to be my wife&amp;rsquo;s Christmas present, so we made sure to put a lot of extra love and care into it. We used a Raspberry Pi, an LCD panel from a laptop, and some other hobbyist components I&amp;rsquo;ll go over. You connect this picture frame to your home WiFi network to configure it via a web interface, or upload pictures to it with FTP. I have the schematic and all of the code for it on &lt;a href="https://github.com/jamesrobb/T-732-ISIT_2017"&gt;Github &lt;span class="iconwrapper"&gt;
+&lt;span class="relative inline-block align-text-bottom icon"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"&gt;&lt;path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/&gt;&lt;/svg&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Animated GIF demonstration of auto dimming"
+width="800"
+height="450"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/02.gif"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/02.gif 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/02.gif 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/02.gif"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Here we can see the auto-dimming feature at work. I emulate a dark room by covering the light sensor. I use increasing exponential decay to calculate the brightness, but it&amp;rsquo;s a bit difficult to truly show that in action. When I performed tests on this feature, I found I liked the way exponential decay worked more than I liked a simple linear relationship between ambient light level and brightness.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Raspberry Pi 3"
+width="3840"
+height="2160"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/03_hu_ec2d14aadc24fe26.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/03_hu_ec2d14aadc24fe26.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/03_hu_f3b4cbd7a50adb91.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/03.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;This is a Raspberry Pi 3 I got as a birthday gift. Always knew I would put it to good use. Thanks Jerome!&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="LCD controller board"
+width="3840"
+height="2160"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/04_hu_53bc272e927c7c58.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/04_hu_53bc272e927c7c58.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/04_hu_eee252624da58cdb.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/04.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I ordered this guy off of eBay for ~20USD. Its the controller board for the LCD panel I used. I had an extra LCD panel for my laptop laying around after I ordered the wrong one when mine needed replacing. Its expensive to ship things to and from Iceland, so I didn&amp;rsquo;t bother with trying to return it.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Workspace all the electronics were assembled"
+width="3840"
+height="2160"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/05_hu_13fd4713536eaed3.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/05_hu_13fd4713536eaed3.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/05_hu_92bdc03b58fd2c7d.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/05.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;DIY electronics projects always take up way more space, and become way more messy than initially anticipated. This is when things were still relatively sane.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Close-up of LCD controller board"
+width="2160"
+height="3840"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/06_hu_3ba5b2391f829503.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/06_hu_3ba5b2391f829503.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/06_hu_6ae146415c0c0fbe.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/06.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;The Raspberry PI connects to the controller board with an HDMI cable, and then the controller board connects to the LCD panel with an eDP (embedded display port) ribbon cable. The buttons do what you would expect the button on the side of a monitor to do - open a menu to control brightness, color, etc. The final product doesn&amp;rsquo;t include these buttons.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Monitor showing microscope view of LCD controller board"
+width="3840"
+height="2160"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/07_hu_721a7dfd6b47df56.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/07_hu_721a7dfd6b47df56.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/07_hu_da6a1ad3497f2068.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/07.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I wanted to be able to control the brightness of the display directly from the Raspberry Pi, but since HDMI doesn&amp;rsquo;t support brightness controls, I had to do a bit of extra work. I looked up the data sheet for the controller board and found the PWM (pulse width modulation) pin that controls the brightness of the LCD panel. I took the board over to the electronics lab at my university as they had a microscope we could use. The pins were pretty tiny, so this helped a lot.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Close-up of monitor showing microscope view of LCD controller board"
+width="3840"
+height="2160"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/08_hu_feb8ab03962abe03.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/08_hu_feb8ab03962abe03.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/08_hu_9e9232e6282db1f8.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/08.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Here you can see we soldered on two wires. One was for enabling the backlight (which I didn&amp;rsquo;t wind up using), and the other was the aforementioned PWM pin.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="LCD controller with two additional wires soldered on"
+width="3840"
+height="2160"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/09_hu_fcfb419368b4b7e3.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/09_hu_fcfb419368b4b7e3.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/09_hu_fdbf8af2b7a47b3c.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/09.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;All soldered up!&lt;/p&gt;
+&lt;p&gt;This controller board remembers the settings a user enters with the buttons we saw earlier, even after power has been removed. So what I did was set the brightness to 0 with the buttons and then removed the buttons board. From here on out the Raspberry Pi is in charge of brightness!&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Raspberry Pi 3, LCD controller board, and logic level shifter mounted on acrylic sheet"
+width="3840"
+height="2160"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/10_hu_f77fb08344520728.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/10_hu_f77fb08344520728.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/10_hu_bbae95e80b6e27d2.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/10.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I used a spare piece of acrylic to mount the LCD controller board and Raspberry Pi on. The little guy in the middle is a logic level shifter.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Close-up of logic level shifter"
+width="3840"
+height="2160"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/11_hu_afea041fd7353e66.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/11_hu_afea041fd7353e66.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/11_hu_a9698bce8f2c6231.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/11.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I use the logic level shifter to convert a 3.3V PWM signal from the Raspberry Pi to a 5V PWM signal that I connect to the PWM brightness control pin on the LCD controller board. The specs I read said the brightness control should be between 0V to 3.3V, but when I measured with my multi-meter I saw 0V to 5V.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Wall power supply with USB power supply spliced in"
+width="2160"
+height="3840"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/12_hu_738b58f5bd98d725.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/12_hu_738b58f5bd98d725.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/12_hu_c8d142760f26c594.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/12.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;The controller board takes 12V, but the Raspberry Pi takes 5V. I bought a USB car charger to step down the 12V from the power supply to 5V, and then use a standard micro-USB cable to connect the Raspberry Pi to the power supply.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="LCD panel from laptop"
+width="3840"
+height="2160"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/13_hu_fa8b55cb511bacd9.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/13_hu_fa8b55cb511bacd9.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/13_hu_9f718ef01b8b6613.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/13.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;The LCD panel is removed from the laptop screen assembly, and is ready to be put into the frame.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Empty black picture frame"
+width="3840"
+height="2160"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/14_hu_c3d465c4e02089ce.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/14_hu_c3d465c4e02089ce.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/14_hu_64ba0d351a9bcecb.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/14.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I had a local frame shop make a frame for me. I like their work, so I keep going back when I need anything frame related.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Back of empty black picture frame"
+width="3840"
+height="2160"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/15_hu_6eabec567435a606.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/15_hu_6eabec567435a606.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/15_hu_f1b2c6b4e95bfd81.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/15.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I had to carve out a bit of the bottom and side to accommodate the screen. You can see a black piece/stripe along the bottom of the LCD panel in the images above which contains some circuity for the panel.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s call the result rustic. I didn&amp;rsquo;t really have the proper tools on hand to do it properly, and the frame was already assembled when I got it. If I were to do this again, I would make sure this was all carved out before the frame was assembled as it would be way easier to use the proper tools then.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="LCD panel mounted in picture frame as seen from the back"
+width="3840"
+height="2160"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/16_hu_f366427caaa9250.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/16_hu_f366427caaa9250.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/16_hu_f757531ead564ded.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/16.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;The frame also came with a piece of glass. Here I have placed the glass and the LCD panel into the frame and secured them in place with some L-brackets. The extra L-brackets on the left are to hold the power supply.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Small break-out board for a light sensor"
+width="3840"
+height="2160"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/17_hu_6e44cb9ddf00c3b4.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/17_hu_6e44cb9ddf00c3b4.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/17_hu_97103694a48f5789.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/17.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;This is the light sensor I used. Its relatively inexpensive and available from Adafruit. I chose it because it has its own ADC (analog to digital circuit), and the Raspberry Pi has no ADC pins. I use the readings from this to add an auto-dimming feature to the picture frame. I created a small program that continually polls this sensor and then adjusts the brightness on the screen accordingly via the PWM pin I interface with on the LCD controller board.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Light sensor mounted in picture frame"
+width="3840"
+height="2160"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/18_hu_af4d586e87930bd4.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/18_hu_af4d586e87930bd4.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/18_hu_cb57cbb5fa7f111b.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/18.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Light sensor mounted in the recess I carved out for it.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Close-up of circular acrylic discs"
+width="3840"
+height="2160"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/19_hu_fc2e3b2a293cf5a1.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/19_hu_fc2e3b2a293cf5a1.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/19_hu_997c532ed90cb4a1.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/19.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I had the engineering department at my university use their laser cutter to cut some acrylic discs for me to cover the hole for the light sensor. Originally I had just a pin hole drilled for the light sensor, but the angle at which light could enter was just too narrow. This solution wound up looking pretty cool though, so count me satisfied.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Close-up of circular acrylic disc installed in picture frame with light sensor mounted behind"
+width="6016"
+height="4000"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/20_hu_4e70b9d6a3398f0e.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/20_hu_4e70b9d6a3398f0e.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/20_hu_e9221294923ae3c3.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/20.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Here we can see a close up of the acrylic disc covering the light sensor on the top of the frame.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Schematic for the circuitry"
+width="1566"
+height="1548"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/21_hu_29d46d867c39416a.png"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/21_hu_29d46d867c39416a.png 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/21_hu_36473397f8830b5b.png 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/21.png"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I used fritzing to whip up a very basic schematic for the project. Unfortunately developing a fritzing component for the LCD controller board was way more work than it was worth, so I just left some notes.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="All components mounted in picture frame as seen from the back"
+width="3840"
+height="2160"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/22_hu_7367a72ed6a38af0.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/22_hu_7367a72ed6a38af0.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/22_hu_9e9c1fa43d130090.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/22.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Everything inside the frame.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Screenshot of picture frame Web UI"
+width="1053"
+height="624"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/23_hu_b3e93208fbe70104.png"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/23_hu_b3e93208fbe70104.png 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/23.png 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/23.png"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;The digital frame runs a small web server. Once it&amp;rsquo;s connected to the WiFi, you can just pop open your browser and configure what you&amp;rsquo;d like to see and how. Currently the way to upload pictures is via FTP, but this could change in the future if I find the time and the will.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Picture frame displaying photo of a misty forest"
+width="6016"
+height="4000"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/24_hu_50f56426adfc20bb.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/24_hu_50f56426adfc20bb.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/24_hu_6c019221d746352f.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/24.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;So nice.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Animated GIF of 360 shot of the picture frame"
+width="800"
+height="450"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/25.gif"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/25.gif 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/25.gif 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/25.gif"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m just having some fun here with my friend&amp;rsquo;s smart phone gimbal.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Picture frame displaying photo with snowflake border pattern"
+width="6016"
+height="4000"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/26_hu_7a7b28ca1f788ee5.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/26_hu_7a7b28ca1f788ee5.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/26_hu_af537397fa2a846.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/26.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I added a last minute &amp;ldquo;seasonal decoration&amp;rdquo; feature. I take an image, in this case a snowflake border, and then superimpose it on each image before it is displayed. Currently I just have one for December.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Picture frame displaying photo of snowy mountain side with trees"
+width="3840"
+height="2160"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/27_hu_ce6dbdd27a9a504f.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/27_hu_ce6dbdd27a9a504f.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/27_hu_84ae053bdee314c6.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/27.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;The final product again. Thanks for reading!&lt;/p&gt;</content:encoded></item><item><title>Icelandic Word Clock</title><link>https://jamesrobb.ca/projects/icelandic_word_clock/</link><pubDate>Thu, 01 Jan 2015 00:00:00 +0000</pubDate><author>me@jamesrobb.ca (James Robb)</author><guid>https://jamesrobb.ca/projects/icelandic_word_clock/</guid><description/><content:encoded>
+&lt;h2 class="relative group"&gt;Introduction
+&lt;div id="introduction" class="anchor"&gt;&lt;/div&gt;
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+&lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#introduction" aria-label="Anchor"&gt;#&lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;
+&lt;p&gt;I built a word clock in the Icelandic Language as a Christmas gift for my wife. I had a ton of fun building it and learned a lot along the way. It was also featured in the &lt;a
+href="https://www.mbl.is/frettir/innlent/2014/12/29/synir_timann_med_ordum_og_ljosum/"
+target="_blank"
+&gt;local paper&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Finished word clock"
+width="1504"
+height="1000"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/01_hu_503a2613289353ce.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/01_hu_503a2613289353ce.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/01_hu_b060bcc25d9709b6.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/01.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;This is the final product. The clock reads &amp;ldquo;klukkan er fimmtán mínútur yfir þrjú&amp;rdquo; which literally translates to &amp;ldquo;the clock is fifteen minutes over three&amp;rdquo; (or said as a native English speaker might &amp;ldquo;the time is fifteen minutes past three&amp;rdquo;). The clock also shows a special birthday message on my wife&amp;rsquo;s birthday - keep reading to see that in action!&lt;/p&gt;
+&lt;p&gt;The design was largely based on a &lt;a
+href="https://www.reddit.com/r/DIY/comments/2ao9yt/i_built_this_word_clock_for_my_brother_and_his/"
+target="_blank"
+&gt;reddit&lt;/a&gt; post I saw. While working on the project I had contacted the poster to ask why he had chosen to use two Arduinos. Turns out he was having trouble controlling both the lights and interfacing with the RTC (real-time clock) module. After a bit of chatting we were able to get his design down to just one Arduino.&lt;/p&gt;
+&lt;p&gt;I used an Arduino Uno and a breadboard to construct the initial clock. Since then, I have improved upon the design and used EagleCAD to design a custom PCB. In this post I will go through my initial design of the &lt;a
+href="#breadboard-version"&gt;breadboard version&lt;/a&gt; and then share some pictures and details about the &lt;a
+href="#pcb-version"&gt;PCB version&lt;/a&gt;. All the code (for both versions) is available on &lt;a href="https://github.com/jamesrobb/icelandic_bday_word_clock"&gt;Github &lt;span class="iconwrapper"&gt;
+&lt;span class="relative inline-block align-text-bottom icon"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"&gt;&lt;path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/&gt;&lt;/svg&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 class="relative group"&gt;Breadboard Version
+&lt;div id="breadboard-version" class="anchor"&gt;&lt;/div&gt;
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+&lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#breadboard-version" aria-label="Anchor"&gt;#&lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Laser cutter program loaded with face of word clock"
+width="1504"
+height="1000"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/02-0_hu_70214c0f6c446065.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/02-0_hu_70214c0f6c446065.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/02-0_hu_592b752dc9d7f562.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/02-0.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I started the project by laying out the letters for the clock in Adobe Illustrator. I was able to export an SVG from there and load it into the program that drives the laser cutter. I had never cut anything out with a laser cutter previously but a friend of a friend at the University of Iceland very generously donated his time, expertise, and access to an actual laser cutter to the project.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Laser cutter cutting an X into a piece of wood"
+width="1504"
+height="1000"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/02-1_hu_da1a791c4043543c.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/02-1_hu_da1a791c4043543c.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/02-1_hu_8e00508466a57860.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/02-1.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;We went through a few pieces of wood before getting the settings right. We had to balance the intensity of the laser, the speed at which it moved, and the thickness of the wood. If the wood was too thick we tended to set it on fire and couldn&amp;rsquo;t get a nice finish, but if the laser moved too quickly or wasn&amp;rsquo;t at a high enough intensity then we wouldn&amp;rsquo;t consistently cut through the wood in all places we wanted to.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Laser cutter cutting an X into a piece of wood"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/02-2_hu_d126845ba746323e.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/02-2_hu_d126845ba746323e.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/02-2_hu_8ca6091ff6ea110f.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/02-2.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Once we get the settings right it only took a quick sanding to get the face of the clock looking great. Not seen in this photo, but I did eventually stain the face with a wood stain from the local hardware store.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Wood panel with LEDs mounted and resistors attached"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/03_hu_a5a8640d255020b9.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/03_hu_a5a8640d255020b9.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/03_hu_373e83fda7044574.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/03.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;On the left is the wood panel I used to mount all of the LEDs. I had also cut this out with a laser cutter since I had access to it, but it could have just as easily been done with a drill and a bit of patience.&lt;/p&gt;
+&lt;p&gt;Each LED has a current limiting resistor. In theory it would have been possible to use one current limiting resistor, but if one does the math it would have needed to be able to dissipate more heat than made sense for a project like this.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Circuit board mounted on back of LED panel"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/06_hu_186ded11628d8b9d.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/06_hu_186ded11628d8b9d.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/06_hu_417bf19192714cc0.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/06.jpeg"&gt;&lt;/figure&gt;
+&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Circuit board mounted on back of LED panel (alternate angle)"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/07_hu_fc94fb42e0bcaa7f.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/07_hu_fc94fb42e0bcaa7f.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/07_hu_1056600f999b0c70.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/07.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Here I have the &amp;ldquo;brain&amp;rdquo; board mounted on the back of the LED panel. It consists of a few components:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The Arduino does all the logic. It will change what words are illuminated, what button presses do when setting the time, etc.&lt;/li&gt;
+&lt;li&gt;The circular bit is an RTC module and keeps track of the time (even when the clock is unplugged). The Arduino&amp;rsquo;s internal clock can drift minutes per day (depending on the quality of the Arduino).&lt;/li&gt;
+&lt;li&gt;The black DIPs are three pairs of shift registers and transistor arrays (located next to each other horizontally). The shift registers are used to expand the number of output pins I have access to (I use one pin per word). The transistor arrays are controlled by the shift registers and drive the LEDs because the shift registers can&amp;rsquo;t reliably handle the current required to power the LEDs directly.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Black acrylic gasket for LEDs"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/04_hu_b531cabc1f1f4311.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/04_hu_b531cabc1f1f4311.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/04_hu_4dfa9ac2749d6ae9.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/04.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I needed a gasket to sit between the LED mounting panel and the face of the clock so that when one word lit up the light didn&amp;rsquo;t bleed into the surrounding letters. I had a local shop cut out a gasket from a thick piece of black acrylic but I was concerned light would still make its way between the acrylic and the LED panel so I tried to use some sticky tack. The sticky tack was not a good solution as it was just too difficult to get a thin and consistent layer around all the words. I wound up using some automotive gasket maker which worked well but I think it was overkill. I found a much better solution which I&amp;rsquo;ll show later in the section about the &lt;a
+href="#pcb-version"&gt;PCB version&lt;/a&gt; of the clock.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Black acrylic gasket for fitted with LED diffusers"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/05_hu_103fed8be4c98fe4.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/05_hu_103fed8be4c98fe4.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/05_hu_c69b13b2639df0f8.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/05.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;For LED diffusers I had the same shop cut out the appropriate shapes from a thinner piece of white acrylic and held them in place with glue. This was insanely time consuming and not a solution I would recommend - what I came up with for the PCB version was much less time consuming (and much cheaper).&lt;/p&gt;
+&lt;video autoplay loop muted playsinline&gt;
+&lt;source src="tilhamingju.mp4" type="video/mp4"&gt;
+&lt;/video&gt;
+&lt;p&gt;Getting to this point was a great feeling - I could finally get a real peek at what the final product would look like.&lt;/p&gt;
+&lt;p&gt;Here I have the birthday message &amp;ldquo;til hamingju kata&amp;rdquo; displayed which just means &amp;ldquo;happy birthday kata&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Wooden frame the LED panel will fit into"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/10_hu_c9feda503dd9e0fe.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/10_hu_c9feda503dd9e0fe.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/10_hu_7b93d74927abdf58.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/10.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Next was the frame. This is something I outsourced as well as I just didn&amp;rsquo;t have the tools or space for it, but something I would like to do myself in the future. It&amp;rsquo;s not very complicated, just a very thick picture frame with a notch in it for the LED panel and face to slip into. There is also a small notch for the back of the clock to slip into.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Back of fully assembled clock"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/11_hu_972ab428fd0f7b17.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/11_hu_972ab428fd0f7b17.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/11_hu_c96243bba6b803c1.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/11.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Like the reddit post I followed I chose to use an translucent acrylic panel for the back of the clock; I think it&amp;rsquo;s really cool to be able to see the insides. If one looks very close they can see the buttons used to set the time wired into the right side of the frame (as seen from the back). There is a mode button and an increment button. The mode button flips between year/month/day/hour/minute (and a birthday demo mode) and the increment button changes the values.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Front of fully assembled clock"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/12_hu_a6581201794382e0.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/12_hu_a6581201794382e0.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/12_hu_a3d870075d4c18b3.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/12.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;The final product as seen from the front one more time. My wife loved it and it was just a blast to build.&lt;/p&gt;
+&lt;p&gt;Now, onto the PCB version where I incorporated some of the lessons learned building this version.&lt;/p&gt;
+&lt;h2 class="relative group"&gt;PCB Version
+&lt;div id="pcb-version" class="anchor"&gt;&lt;/div&gt;
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+&lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#pcb-version" aria-label="Anchor"&gt;#&lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Black PCB with SMD LEDs soldered onto it"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/13_hu_88a92384fe406792.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/13_hu_88a92384fe406792.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/13_hu_7e286ddccfac8e39.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/13.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I used EagleCAD to design a custom PCB for this version of the clock. Here I used individually addressable LEDs so now I could control each letter instead of one word at a time, and I could change the colour of each letter instead of just the &amp;ldquo;happy birthday&amp;rdquo; letters. I soldered on all of the SMD LEDs by hand which was time consuming and error prone, but I managed to do it without damaging any of the pads.&lt;/p&gt;
+&lt;p&gt;If I ever made a third version I would make the clock consist of many smaller PCBs (e.g. one for each row) instead of one big board. There are a few reasons I think this would be better:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I could get a better price on each PCB as I would be ordering more units.&lt;/li&gt;
+&lt;li&gt;When one board was inevitably bad it would mean less waste as it&amp;rsquo;s just a row that would need to be tossed.&lt;/li&gt;
+&lt;li&gt;The solder stencil would be cheaper and I could get away with a relatively small oven.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Black PCB with SMD LEDs soldered onto it"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/17_hu_e2d8bbe179ec13bf.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/17_hu_e2d8bbe179ec13bf.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/17_hu_c36ac55b01589819.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/17.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;The &amp;ldquo;brain&amp;rdquo; is essentially still just an Arduino. I created a circuit on the back of the PCB for a very simple Arduino and flashed the Arduino bootloader to it. With that I could upload standard Arduino sketches to it. Like the LEDs, all hand soldered!&lt;/p&gt;
+&lt;p&gt;The LEDs I chose use a one-wire protocol and so I only needed one output pin from the embedded Arduino to control all of the LEDs. This meant that I didn&amp;rsquo;t need the shift registers nor the transistor arrays. The downside is that the addressable LEDs were significantly more expensive than just plan white LEDs.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Cork gaskets for LEDs with diffuser"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/14_hu_ff5836ee37a09f60.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/14_hu_ff5836ee37a09f60.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/14_hu_c2ee3723ed9cfffd.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/14.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I simplified the design of the gaskets greatly this time around by using cork. It was cheap, easy to cut, and slightly compressible so I could get a very good seal but pressing all the layers together tight before slipping them into the frame.&lt;/p&gt;
+&lt;p&gt;The diffuser is also much simpler here. Rather than cutting out separate pieces of acrylic I found a plastic film from 3M that is cheap, translucent, and has an adhesive on one side. It doesn&amp;rsquo;t have the shine to it that acrylic does but I found that at a normal viewing distance one could not tell the difference between the plastic film and the white acrylic.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Front of fully assembled PCB version of the clock"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/18_hu_c479e4d535347c1c.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/18_hu_c479e4d535347c1c.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/18_hu_57bcc5043c125f3d.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/18.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;This is the final product, which looks pretty much the same as the breadboard version when viewed from the front. I sold this particular clock to someone who lives in the north of Iceland (whose significant other is named Sigrún).&lt;/p&gt;
+&lt;p&gt;Thanks for reading!&lt;/p&gt;</content:encoded></item></channel></rss>
