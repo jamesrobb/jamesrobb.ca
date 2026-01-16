@@ -1,0 +1,858 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>DIY on James Robb</title><link>https://jamesrobb.ca/tags/diy/</link><description>Recent content in DIY on James Robb</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>me@jamesrobb.ca (James Robb)</managingEditor><webMaster>me@jamesrobb.ca (James Robb)</webMaster><copyright>© 2026 James Robb</copyright><lastBuildDate>Wed, 20 Dec 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://jamesrobb.ca/tags/diy/index.xml" rel="self" type="application/rss+xml"/><item><title>Auto-Dimming WiFi-Enabled Digital Picture Frame</title><link>https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/</link><pubDate>Wed, 20 Dec 2017 00:00:00 +0000</pubDate><author>me@jamesrobb.ca (James Robb)</author><guid>https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/</guid><description/><content:encoded>&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Finished digital picture frame"
+width="3840"
+height="2160"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/01_hu_7bfbc0f269792670.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/01_hu_7bfbc0f269792670.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/01_hu_fa737f7042becb00.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/01.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s start with the final product! This is a digital picture frame I built (with my classmate Gunnar) for our Embedded Systems and IoT course at Reykjavik University. It&amp;rsquo;s also going to be my wife&amp;rsquo;s Christmas present, so we made sure to put a lot of extra love and care into it. We used a Raspberry Pi, an LCD panel from a laptop, and some other hobbyist components I&amp;rsquo;ll go over. You connect this picture frame to your home WiFi network to configure it via a web interface, or upload pictures to it with FTP. I have the schematic and all of the code for it on &lt;a href="https://github.com/jamesrobb/T-732-ISIT_2017"&gt;Github &lt;span class="iconwrapper"&gt;
+&lt;span class="relative inline-block align-text-bottom icon"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"&gt;&lt;path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/&gt;&lt;/svg&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Animated GIF demonstration of auto dimming"
+width="800"
+height="450"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/02.gif"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/02.gif 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/02.gif 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/02.gif"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Here we can see the auto-dimming feature at work. I emulate a dark room by covering the light sensor. I use increasing exponential decay to calculate the brightness, but it&amp;rsquo;s a bit difficult to truly show that in action. When I performed tests on this feature, I found I liked the way exponential decay worked more than I liked a simple linear relationship between ambient light level and brightness.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Raspberry Pi 3"
+width="3840"
+height="2160"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/03_hu_ec2d14aadc24fe26.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/03_hu_ec2d14aadc24fe26.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/03_hu_f3b4cbd7a50adb91.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/03.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;This is a Raspberry Pi 3 I got as a birthday gift. Always knew I would put it to good use. Thanks Jerome!&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="LCD controller board"
+width="3840"
+height="2160"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/04_hu_53bc272e927c7c58.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/04_hu_53bc272e927c7c58.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/04_hu_eee252624da58cdb.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/04.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I ordered this guy off of eBay for ~20USD. Its the controller board for the LCD panel I used. I had an extra LCD panel for my laptop laying around after I ordered the wrong one when mine needed replacing. Its expensive to ship things to and from Iceland, so I didn&amp;rsquo;t bother with trying to return it.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Workspace all the electronics were assembled"
+width="3840"
+height="2160"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/05_hu_13fd4713536eaed3.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/05_hu_13fd4713536eaed3.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/05_hu_92bdc03b58fd2c7d.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/05.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;DIY electronics projects always take up way more space, and become way more messy than initially anticipated. This is when things were still relatively sane.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Close-up of LCD controller board"
+width="2160"
+height="3840"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/06_hu_3ba5b2391f829503.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/06_hu_3ba5b2391f829503.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/06_hu_6ae146415c0c0fbe.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/06.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;The Raspberry PI connects to the controller board with an HDMI cable, and then the controller board connects to the LCD panel with an eDP (embedded display port) ribbon cable. The buttons do what you would expect the button on the side of a monitor to do - open a menu to control brightness, color, etc. The final product doesn&amp;rsquo;t include these buttons.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Monitor showing microscope view of LCD controller board"
+width="3840"
+height="2160"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/07_hu_721a7dfd6b47df56.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/07_hu_721a7dfd6b47df56.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/07_hu_da6a1ad3497f2068.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/07.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I wanted to be able to control the brightness of the display directly from the Raspberry Pi, but since HDMI doesn&amp;rsquo;t support brightness controls, I had to do a bit of extra work. I looked up the data sheet for the controller board and found the PWM (pulse width modulation) pin that controls the brightness of the LCD panel. I took the board over to the electronics lab at my university as they had a microscope we could use. The pins were pretty tiny, so this helped a lot.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Close-up of monitor showing microscope view of LCD controller board"
+width="3840"
+height="2160"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/08_hu_feb8ab03962abe03.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/08_hu_feb8ab03962abe03.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/08_hu_9e9232e6282db1f8.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/08.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Here you can see we soldered on two wires. One was for enabling the backlight (which I didn&amp;rsquo;t wind up using), and the other was the aforementioned PWM pin.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="LCD controller with two additional wires soldered on"
+width="3840"
+height="2160"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/09_hu_fcfb419368b4b7e3.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/09_hu_fcfb419368b4b7e3.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/09_hu_fdbf8af2b7a47b3c.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/09.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;All soldered up!&lt;/p&gt;
+&lt;p&gt;This controller board remembers the settings a user enters with the buttons we saw earlier, even after power has been removed. So what I did was set the brightness to 0 with the buttons and then removed the buttons board. From here on out the Raspberry Pi is in charge of brightness!&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Raspberry Pi 3, LCD controller board, and logic level shifter mounted on acrylic sheet"
+width="3840"
+height="2160"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/10_hu_f77fb08344520728.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/10_hu_f77fb08344520728.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/10_hu_bbae95e80b6e27d2.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/10.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I used a spare piece of acrylic to mount the LCD controller board and Raspberry Pi on. The little guy in the middle is a logic level shifter.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Close-up of logic level shifter"
+width="3840"
+height="2160"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/11_hu_afea041fd7353e66.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/11_hu_afea041fd7353e66.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/11_hu_a9698bce8f2c6231.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/11.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I use the logic level shifter to convert a 3.3V PWM signal from the Raspberry Pi to a 5V PWM signal that I connect to the PWM brightness control pin on the LCD controller board. The specs I read said the brightness control should be between 0V to 3.3V, but when I measured with my multi-meter I saw 0V to 5V.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Wall power supply with USB power supply spliced in"
+width="2160"
+height="3840"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/12_hu_738b58f5bd98d725.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/12_hu_738b58f5bd98d725.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/12_hu_c8d142760f26c594.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/12.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;The controller board takes 12V, but the Raspberry Pi takes 5V. I bought a USB car charger to step down the 12V from the power supply to 5V, and then use a standard micro-USB cable to connect the Raspberry Pi to the power supply.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="LCD panel from laptop"
+width="3840"
+height="2160"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/13_hu_fa8b55cb511bacd9.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/13_hu_fa8b55cb511bacd9.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/13_hu_9f718ef01b8b6613.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/13.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;The LCD panel is removed from the laptop screen assembly, and is ready to be put into the frame.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Empty black picture frame"
+width="3840"
+height="2160"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/14_hu_c3d465c4e02089ce.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/14_hu_c3d465c4e02089ce.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/14_hu_64ba0d351a9bcecb.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/14.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I had a local frame shop make a frame for me. I like their work, so I keep going back when I need anything frame related.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Back of empty black picture frame"
+width="3840"
+height="2160"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/15_hu_6eabec567435a606.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/15_hu_6eabec567435a606.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/15_hu_f1b2c6b4e95bfd81.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/15.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I had to carve out a bit of the bottom and side to accommodate the screen. You can see a black piece/stripe along the bottom of the LCD panel in the images above which contains some circuity for the panel.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s call the result rustic. I didn&amp;rsquo;t really have the proper tools on hand to do it properly, and the frame was already assembled when I got it. If I were to do this again, I would make sure this was all carved out before the frame was assembled as it would be way easier to use the proper tools then.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="LCD panel mounted in picture frame as seen from the back"
+width="3840"
+height="2160"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/16_hu_f366427caaa9250.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/16_hu_f366427caaa9250.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/16_hu_f757531ead564ded.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/16.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;The frame also came with a piece of glass. Here I have placed the glass and the LCD panel into the frame and secured them in place with some L-brackets. The extra L-brackets on the left are to hold the power supply.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Small break-out board for a light sensor"
+width="3840"
+height="2160"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/17_hu_6e44cb9ddf00c3b4.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/17_hu_6e44cb9ddf00c3b4.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/17_hu_97103694a48f5789.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/17.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;This is the light sensor I used. Its relatively inexpensive and available from Adafruit. I chose it because it has its own ADC (analog to digital circuit), and the Raspberry Pi has no ADC pins. I use the readings from this to add an auto-dimming feature to the picture frame. I created a small program that continually polls this sensor and then adjusts the brightness on the screen accordingly via the PWM pin I interface with on the LCD controller board.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Light sensor mounted in picture frame"
+width="3840"
+height="2160"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/18_hu_af4d586e87930bd4.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/18_hu_af4d586e87930bd4.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/18_hu_cb57cbb5fa7f111b.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/18.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Light sensor mounted in the recess I carved out for it.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Close-up of circular acrylic discs"
+width="3840"
+height="2160"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/19_hu_fc2e3b2a293cf5a1.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/19_hu_fc2e3b2a293cf5a1.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/19_hu_997c532ed90cb4a1.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/19.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I had the engineering department at my university use their laser cutter to cut some acrylic discs for me to cover the hole for the light sensor. Originally I had just a pin hole drilled for the light sensor, but the angle at which light could enter was just too narrow. This solution wound up looking pretty cool though, so count me satisfied.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Close-up of circular acrylic disc installed in picture frame with light sensor mounted behind"
+width="6016"
+height="4000"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/20_hu_4e70b9d6a3398f0e.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/20_hu_4e70b9d6a3398f0e.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/20_hu_e9221294923ae3c3.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/20.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Here we can see a close up of the acrylic disc covering the light sensor on the top of the frame.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Schematic for the circuitry"
+width="1566"
+height="1548"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/21_hu_29d46d867c39416a.png"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/21_hu_29d46d867c39416a.png 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/21_hu_36473397f8830b5b.png 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/21.png"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I used fritzing to whip up a very basic schematic for the project. Unfortunately developing a fritzing component for the LCD controller board was way more work than it was worth, so I just left some notes.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="All components mounted in picture frame as seen from the back"
+width="3840"
+height="2160"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/22_hu_7367a72ed6a38af0.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/22_hu_7367a72ed6a38af0.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/22_hu_9e9c1fa43d130090.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/22.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Everything inside the frame.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Screenshot of picture frame Web UI"
+width="1053"
+height="624"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/23_hu_b3e93208fbe70104.png"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/23_hu_b3e93208fbe70104.png 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/23.png 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/23.png"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;The digital frame runs a small web server. Once it&amp;rsquo;s connected to the WiFi, you can just pop open your browser and configure what you&amp;rsquo;d like to see and how. Currently the way to upload pictures is via FTP, but this could change in the future if I find the time and the will.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Picture frame displaying photo of a misty forest"
+width="6016"
+height="4000"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/24_hu_50f56426adfc20bb.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/24_hu_50f56426adfc20bb.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/24_hu_6c019221d746352f.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/24.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;So nice.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Animated GIF of 360 shot of the picture frame"
+width="800"
+height="450"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/25.gif"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/25.gif 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/25.gif 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/25.gif"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m just having some fun here with my friend&amp;rsquo;s smart phone gimbal.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Picture frame displaying photo with snowflake border pattern"
+width="6016"
+height="4000"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/26_hu_7a7b28ca1f788ee5.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/26_hu_7a7b28ca1f788ee5.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/26_hu_af537397fa2a846.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/26.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I added a last minute &amp;ldquo;seasonal decoration&amp;rdquo; feature. I take an image, in this case a snowflake border, and then superimpose it on each image before it is displayed. Currently I just have one for December.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Picture frame displaying photo of snowy mountain side with trees"
+width="3840"
+height="2160"
+src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/27_hu_ce6dbdd27a9a504f.jpeg"
+srcset="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/27_hu_ce6dbdd27a9a504f.jpeg 800w, https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/27_hu_84ae053bdee314c6.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/auto_dimming_wifi_picture_frame/27.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;The final product again. Thanks for reading!&lt;/p&gt;</content:encoded></item><item><title>Icelandic Word Clock</title><link>https://jamesrobb.ca/projects/icelandic_word_clock/</link><pubDate>Thu, 01 Jan 2015 00:00:00 +0000</pubDate><author>me@jamesrobb.ca (James Robb)</author><guid>https://jamesrobb.ca/projects/icelandic_word_clock/</guid><description/><content:encoded>
+&lt;h2 class="relative group"&gt;Introduction
+&lt;div id="introduction" class="anchor"&gt;&lt;/div&gt;
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+&lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#introduction" aria-label="Anchor"&gt;#&lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;
+&lt;p&gt;I built a word clock in the Icelandic Language as a Christmas gift for my wife. I had a ton of fun building it and learned a lot along the way. It was also featured in the &lt;a
+href="https://www.mbl.is/frettir/innlent/2014/12/29/synir_timann_med_ordum_og_ljosum/"
+target="_blank"
+&gt;local paper&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Finished word clock"
+width="1504"
+height="1000"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/01_hu_503a2613289353ce.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/01_hu_503a2613289353ce.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/01_hu_b060bcc25d9709b6.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/01.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;This is the final product. The clock reads &amp;ldquo;klukkan er fimmtán mínútur yfir þrjú&amp;rdquo; which literally translates to &amp;ldquo;the clock is fifteen minutes over three&amp;rdquo; (or said as a native English speaker might &amp;ldquo;the time is fifteen minutes past three&amp;rdquo;). The clock also shows a special birthday message on my wife&amp;rsquo;s birthday - keep reading to see that in action!&lt;/p&gt;
+&lt;p&gt;The design was largely based on a &lt;a
+href="https://www.reddit.com/r/DIY/comments/2ao9yt/i_built_this_word_clock_for_my_brother_and_his/"
+target="_blank"
+&gt;reddit&lt;/a&gt; post I saw. While working on the project I had contacted the poster to ask why he had chosen to use two Arduinos. Turns out he was having trouble controlling both the lights and interfacing with the RTC (real-time clock) module. After a bit of chatting we were able to get his design down to just one Arduino.&lt;/p&gt;
+&lt;p&gt;I used an Arduino Uno and a breadboard to construct the initial clock. Since then, I have improved upon the design and used EagleCAD to design a custom PCB. In this post I will go through my initial design of the &lt;a
+href="#breadboard-version"&gt;breadboard version&lt;/a&gt; and then share some pictures and details about the &lt;a
+href="#pcb-version"&gt;PCB version&lt;/a&gt;. All the code (for both versions) is available on &lt;a href="https://github.com/jamesrobb/icelandic_bday_word_clock"&gt;Github &lt;span class="iconwrapper"&gt;
+&lt;span class="relative inline-block align-text-bottom icon"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"&gt;&lt;path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/&gt;&lt;/svg&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 class="relative group"&gt;Breadboard Version
+&lt;div id="breadboard-version" class="anchor"&gt;&lt;/div&gt;
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+&lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#breadboard-version" aria-label="Anchor"&gt;#&lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Laser cutter program loaded with face of word clock"
+width="1504"
+height="1000"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/02-0_hu_70214c0f6c446065.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/02-0_hu_70214c0f6c446065.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/02-0_hu_592b752dc9d7f562.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/02-0.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I started the project by laying out the letters for the clock in Adobe Illustrator. I was able to export an SVG from there and load it into the program that drives the laser cutter. I had never cut anything out with a laser cutter previously but a friend of a friend at the University of Iceland very generously donated his time, expertise, and access to an actual laser cutter to the project.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Laser cutter cutting an X into a piece of wood"
+width="1504"
+height="1000"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/02-1_hu_da1a791c4043543c.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/02-1_hu_da1a791c4043543c.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/02-1_hu_8e00508466a57860.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/02-1.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;We went through a few pieces of wood before getting the settings right. We had to balance the intensity of the laser, the speed at which it moved, and the thickness of the wood. If the wood was too thick we tended to set it on fire and couldn&amp;rsquo;t get a nice finish, but if the laser moved too quickly or wasn&amp;rsquo;t at a high enough intensity then we wouldn&amp;rsquo;t consistently cut through the wood in all places we wanted to.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Laser cutter cutting an X into a piece of wood"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/02-2_hu_d126845ba746323e.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/02-2_hu_d126845ba746323e.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/02-2_hu_8ca6091ff6ea110f.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/02-2.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Once we get the settings right it only took a quick sanding to get the face of the clock looking great. Not seen in this photo, but I did eventually stain the face with a wood stain from the local hardware store.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Wood panel with LEDs mounted and resistors attached"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/03_hu_a5a8640d255020b9.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/03_hu_a5a8640d255020b9.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/03_hu_373e83fda7044574.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/03.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;On the left is the wood panel I used to mount all of the LEDs. I had also cut this out with a laser cutter since I had access to it, but it could have just as easily been done with a drill and a bit of patience.&lt;/p&gt;
+&lt;p&gt;Each LED has a current limiting resistor. In theory it would have been possible to use one current limiting resistor, but if one does the math it would have needed to be able to dissipate more heat than made sense for a project like this.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Circuit board mounted on back of LED panel"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/06_hu_186ded11628d8b9d.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/06_hu_186ded11628d8b9d.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/06_hu_417bf19192714cc0.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/06.jpeg"&gt;&lt;/figure&gt;
+&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Circuit board mounted on back of LED panel (alternate angle)"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/07_hu_fc94fb42e0bcaa7f.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/07_hu_fc94fb42e0bcaa7f.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/07_hu_1056600f999b0c70.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/07.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Here I have the &amp;ldquo;brain&amp;rdquo; board mounted on the back of the LED panel. It consists of a few components:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The Arduino does all the logic. It will change what words are illuminated, what button presses do when setting the time, etc.&lt;/li&gt;
+&lt;li&gt;The circular bit is an RTC module and keeps track of the time (even when the clock is unplugged). The Arduino&amp;rsquo;s internal clock can drift minutes per day (depending on the quality of the Arduino).&lt;/li&gt;
+&lt;li&gt;The black DIPs are three pairs of shift registers and transistor arrays (located next to each other horizontally). The shift registers are used to expand the number of output pins I have access to (I use one pin per word). The transistor arrays are controlled by the shift registers and drive the LEDs because the shift registers can&amp;rsquo;t reliably handle the current required to power the LEDs directly.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Black acrylic gasket for LEDs"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/04_hu_b531cabc1f1f4311.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/04_hu_b531cabc1f1f4311.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/04_hu_4dfa9ac2749d6ae9.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/04.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I needed a gasket to sit between the LED mounting panel and the face of the clock so that when one word lit up the light didn&amp;rsquo;t bleed into the surrounding letters. I had a local shop cut out a gasket from a thick piece of black acrylic but I was concerned light would still make its way between the acrylic and the LED panel so I tried to use some sticky tack. The sticky tack was not a good solution as it was just too difficult to get a thin and consistent layer around all the words. I wound up using some automotive gasket maker which worked well but I think it was overkill. I found a much better solution which I&amp;rsquo;ll show later in the section about the &lt;a
+href="#pcb-version"&gt;PCB version&lt;/a&gt; of the clock.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Black acrylic gasket for fitted with LED diffusers"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/05_hu_103fed8be4c98fe4.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/05_hu_103fed8be4c98fe4.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/05_hu_c69b13b2639df0f8.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/05.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;For LED diffusers I had the same shop cut out the appropriate shapes from a thinner piece of white acrylic and held them in place with glue. This was insanely time consuming and not a solution I would recommend - what I came up with for the PCB version was much less time consuming (and much cheaper).&lt;/p&gt;
+&lt;video autoplay loop muted playsinline&gt;
+&lt;source src="tilhamingju.mp4" type="video/mp4"&gt;
+&lt;/video&gt;
+&lt;p&gt;Getting to this point was a great feeling - I could finally get a real peek at what the final product would look like.&lt;/p&gt;
+&lt;p&gt;Here I have the birthday message &amp;ldquo;til hamingju kata&amp;rdquo; displayed which just means &amp;ldquo;happy birthday kata&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Wooden frame the LED panel will fit into"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/10_hu_c9feda503dd9e0fe.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/10_hu_c9feda503dd9e0fe.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/10_hu_7b93d74927abdf58.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/10.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Next was the frame. This is something I outsourced as well as I just didn&amp;rsquo;t have the tools or space for it, but something I would like to do myself in the future. It&amp;rsquo;s not very complicated, just a very thick picture frame with a notch in it for the LED panel and face to slip into. There is also a small notch for the back of the clock to slip into.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Back of fully assembled clock"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/11_hu_972ab428fd0f7b17.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/11_hu_972ab428fd0f7b17.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/11_hu_c96243bba6b803c1.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/11.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Like the reddit post I followed I chose to use an translucent acrylic panel for the back of the clock; I think it&amp;rsquo;s really cool to be able to see the insides. If one looks very close they can see the buttons used to set the time wired into the right side of the frame (as seen from the back). There is a mode button and an increment button. The mode button flips between year/month/day/hour/minute (and a birthday demo mode) and the increment button changes the values.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Front of fully assembled clock"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/12_hu_a6581201794382e0.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/12_hu_a6581201794382e0.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/12_hu_a3d870075d4c18b3.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/12.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;The final product as seen from the front one more time. My wife loved it and it was just a blast to build.&lt;/p&gt;
+&lt;p&gt;Now, onto the PCB version where I incorporated some of the lessons learned building this version.&lt;/p&gt;
+&lt;h2 class="relative group"&gt;PCB Version
+&lt;div id="pcb-version" class="anchor"&gt;&lt;/div&gt;
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none"&gt;
+&lt;a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#pcb-version" aria-label="Anchor"&gt;#&lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Black PCB with SMD LEDs soldered onto it"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/13_hu_88a92384fe406792.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/13_hu_88a92384fe406792.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/13_hu_7e286ddccfac8e39.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/13.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I used EagleCAD to design a custom PCB for this version of the clock. Here I used individually addressable LEDs so now I could control each letter instead of one word at a time, and I could change the colour of each letter instead of just the &amp;ldquo;happy birthday&amp;rdquo; letters. I soldered on all of the SMD LEDs by hand which was time consuming and error prone, but I managed to do it without damaging any of the pads.&lt;/p&gt;
+&lt;p&gt;If I ever made a third version I would make the clock consist of many smaller PCBs (e.g. one for each row) instead of one big board. There are a few reasons I think this would be better:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I could get a better price on each PCB as I would be ordering more units.&lt;/li&gt;
+&lt;li&gt;When one board was inevitably bad it would mean less waste as it&amp;rsquo;s just a row that would need to be tossed.&lt;/li&gt;
+&lt;li&gt;The solder stencil would be cheaper and I could get away with a relatively small oven.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Black PCB with SMD LEDs soldered onto it"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/17_hu_e2d8bbe179ec13bf.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/17_hu_e2d8bbe179ec13bf.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/17_hu_c36ac55b01589819.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/17.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;The &amp;ldquo;brain&amp;rdquo; is essentially still just an Arduino. I created a circuit on the back of the PCB for a very simple Arduino and flashed the Arduino bootloader to it. With that I could upload standard Arduino sketches to it. Like the LEDs, all hand soldered!&lt;/p&gt;
+&lt;p&gt;The LEDs I chose use a one-wire protocol and so I only needed one output pin from the embedded Arduino to control all of the LEDs. This meant that I didn&amp;rsquo;t need the shift registers nor the transistor arrays. The downside is that the addressable LEDs were significantly more expensive than just plan white LEDs.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Cork gaskets for LEDs with diffuser"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/14_hu_ff5836ee37a09f60.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/14_hu_ff5836ee37a09f60.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/14_hu_c2ee3723ed9cfffd.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/14.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I simplified the design of the gaskets greatly this time around by using cork. It was cheap, easy to cut, and slightly compressible so I could get a very good seal but pressing all the layers together tight before slipping them into the frame.&lt;/p&gt;
+&lt;p&gt;The diffuser is also much simpler here. Rather than cutting out separate pieces of acrylic I found a plastic film from 3M that is cheap, translucent, and has an adhesive on one side. It doesn&amp;rsquo;t have the shine to it that acrylic does but I found that at a normal viewing distance one could not tell the difference between the plastic film and the white acrylic.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Front of fully assembled PCB version of the clock"
+width="1805"
+height="1200"
+src="https://jamesrobb.ca/projects/icelandic_word_clock/18_hu_c479e4d535347c1c.jpeg"
+srcset="https://jamesrobb.ca/projects/icelandic_word_clock/18_hu_c479e4d535347c1c.jpeg 800w, https://jamesrobb.ca/projects/icelandic_word_clock/18_hu_57bcc5043c125f3d.jpeg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/icelandic_word_clock/18.jpeg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;This is the final product, which looks pretty much the same as the breadboard version when viewed from the front. I sold this particular clock to someone who lives in the north of Iceland (whose significant other is named Sigrún).&lt;/p&gt;
+&lt;p&gt;Thanks for reading!&lt;/p&gt;</content:encoded></item><item><title>1977 Kawasaki KZ650 Restoration</title><link>https://jamesrobb.ca/projects/kz650/</link><pubDate>Mon, 01 Mar 2010 00:00:00 +0000</pubDate><author>me@jamesrobb.ca (James Robb)</author><guid>https://jamesrobb.ca/projects/kz650/</guid><description/><content:encoded>&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Restored KZ650 parked on street"
+width="720"
+height="480"
+src="https://jamesrobb.ca/projects/kz650/finished-01.jpg"
+srcset="https://jamesrobb.ca/projects/kz650/finished-01.jpg 800w, https://jamesrobb.ca/projects/kz650/finished-01.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/kz650/finished-01.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;My father and I purchased a 1977 Kawasaki KZ650 in need of some TLC from some family members in southern Manitoba after I had expressed an interest in motorcycles. My father was a seasoned biker and I learned a lot from him throughout the process. The motorcycle technically ran when we purchased it, but not very well. After a year of learning and a considerable amount of elbow grease, I had a wonderful motorcycle and a great experience under my belt. I replaced parts of the transmission, converted many mechanical components to solid state components, and painted it.&lt;/p&gt;
+&lt;p&gt;I unfortunately didn&amp;rsquo;t detail this restoration as well as I would have liked to - it was one of my first big projects.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Red KZ650 in bed of an old truck"
+width="800"
+height="511"
+src="https://jamesrobb.ca/projects/kz650/starting_point.jpg"
+srcset="https://jamesrobb.ca/projects/kz650/starting_point.jpg 800w, https://jamesrobb.ca/projects/kz650/starting_point.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/kz650/starting_point.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Despite my best efforts I could not find a higher resolution photo of the motorcycle on the day I bought it. This is the motorcycle loaded into the back of my beat-up Ford Ranger.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="KZ650 carburetors"
+width="720"
+height="480"
+src="https://jamesrobb.ca/projects/kz650/carbs.jpg"
+srcset="https://jamesrobb.ca/projects/kz650/carbs.jpg 800w, https://jamesrobb.ca/projects/kz650/carbs.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/kz650/carbs.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;The bike ran pretty rough when I got it. One of the first places I started was with the carburetors. I had ordered a new jet and gasket kit online to get them in the best condition I could. I followed the directions to do an initial tuning on them but eventually sought the help of a local mechanic so he could hook them up to a balance bar and sync them.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="KZ650 dash gauges"
+width="720"
+height="480"
+src="https://jamesrobb.ca/projects/kz650/02.jpg"
+srcset="https://jamesrobb.ca/projects/kz650/02.jpg 800w, https://jamesrobb.ca/projects/kz650/02.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/kz650/02.jpg"&gt;&lt;/figure&gt;
+&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="KZ650 with all body panels and gas tank removed"
+width="720"
+height="480"
+src="https://jamesrobb.ca/projects/kz650/01.jpg"
+srcset="https://jamesrobb.ca/projects/kz650/01.jpg 800w, https://jamesrobb.ca/projects/kz650/01.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/kz650/01.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;The electrical system was also pretty rough. I found a kit online to convert to a point-less ignition system which was great because I was really bad at shaving down points and I wasn&amp;rsquo;t looking forward to doing it regularly. It worked very well and never gave me problems again.&lt;/p&gt;
+&lt;p&gt;The rectifier/regulator on the bike was an an old mechanical device that would not reliably charge the battery. I ordered a solid state replacement on eBay from Japan. The part arrived in a ziploc-style sandwich bag with instructions printed off on a home printer. The instructions looked like they had gone through Google Translate and I had to read them about twenty times before I could infer what exactly I was supposed to do. The part did work as advertised once installed correctly, though.&lt;/p&gt;
+&lt;p&gt;This bike has both a kick starter and an electric starter. The kick starter worked just fine but the electric starter often wouldn&amp;rsquo;t catch and would instead just grind - it needed a new starter clutch. I went to a local shop, Canadian Motorcycle, that specialized in parts for old motorcycles and to my luck there was another KZ650 sitting in the back. The owner of the shop let me take my tools into the back and pull out the starter clutch. He also gave me a good deal on it since I nicely set aside all of the other parts I took off to get to it.&lt;/p&gt;
+&lt;p&gt;With all of these things replaced the bike ran pretty great. I did some other basic things too like replace the tires and brakes, and had a local reupholstery shop redo the duct tape seat.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="KZ650 side panel with primer applied"
+width="720"
+height="480"
+src="https://jamesrobb.ca/projects/kz650/03.jpg"
+srcset="https://jamesrobb.ca/projects/kz650/03.jpg 800w, https://jamesrobb.ca/projects/kz650/03.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/kz650/03.jpg"&gt;&lt;/figure&gt;
+&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="KZ650 gas tank with primer applied"
+width="720"
+height="480"
+src="https://jamesrobb.ca/projects/kz650/04.jpg"
+srcset="https://jamesrobb.ca/projects/kz650/04.jpg 800w, https://jamesrobb.ca/projects/kz650/04.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/kz650/04.jpg"&gt;&lt;/figure&gt;
+&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="A grumpy James holding the primed gas tank out in the cold"
+width="720"
+height="480"
+src="https://jamesrobb.ca/projects/kz650/05.jpg"
+srcset="https://jamesrobb.ca/projects/kz650/05.jpg 800w, https://jamesrobb.ca/projects/kz650/05.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/kz650/05.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;A family friend helped me paint it. Doing this taught me that painting was was all about prep - the actual act of painting was a very small part of the whole process. In hindsight I should have waited for it to warm up a bit (my frowny face is in response to a pretty cold day) but I was just too excited to get the bike finished and on the road.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Gas tank being painted"
+width="720"
+height="480"
+src="https://jamesrobb.ca/projects/kz650/06.jpg"
+srcset="https://jamesrobb.ca/projects/kz650/06.jpg 800w, https://jamesrobb.ca/projects/kz650/06.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/kz650/06.jpg"&gt;&lt;/figure&gt;
+&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Painted side panel"
+width="720"
+height="480"
+src="https://jamesrobb.ca/projects/kz650/07.jpg"
+srcset="https://jamesrobb.ca/projects/kz650/07.jpg 800w, https://jamesrobb.ca/projects/kz650/07.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/kz650/07.jpg"&gt;&lt;/figure&gt;
+&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Painted tail piece"
+width="720"
+height="480"
+src="https://jamesrobb.ca/projects/kz650/08.jpg"
+srcset="https://jamesrobb.ca/projects/kz650/08.jpg 800w, https://jamesrobb.ca/projects/kz650/08.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/kz650/08.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I was very happy with the way the painted pieces came out. It&amp;rsquo;s very satisfying to get a glimpse of what the final result will be.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Restored KZ650 seen from the side"
+width="720"
+height="480"
+src="https://jamesrobb.ca/projects/kz650/finished-01.jpg"
+srcset="https://jamesrobb.ca/projects/kz650/finished-01.jpg 800w, https://jamesrobb.ca/projects/kz650/finished-01.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/kz650/finished-01.jpg"&gt;&lt;/figure&gt;
+&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Restored KZ650 seen from the side"
+width="720"
+height="480"
+src="https://jamesrobb.ca/projects/kz650/finished-02.jpg"
+srcset="https://jamesrobb.ca/projects/kz650/finished-02.jpg 800w, https://jamesrobb.ca/projects/kz650/finished-02.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/kz650/finished-02.jpg"&gt;&lt;/figure&gt;
+&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Restored KZ650 seen from the back"
+width="720"
+height="480"
+src="https://jamesrobb.ca/projects/kz650/finished-03.jpg"
+srcset="https://jamesrobb.ca/projects/kz650/finished-03.jpg 800w, https://jamesrobb.ca/projects/kz650/finished-03.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/kz650/finished-03.jpg"&gt;&lt;/figure&gt;
+&lt;figure&gt;&lt;img
+class="my-0 rounded-md"
+loading="lazy"
+decoding="async"
+fetchpriority="auto"
+alt="Restored KZ650 seen from the front"
+width="720"
+height="480"
+src="https://jamesrobb.ca/projects/kz650/finished-04.jpg"
+srcset="https://jamesrobb.ca/projects/kz650/finished-04.jpg 800w, https://jamesrobb.ca/projects/kz650/finished-04.jpg 1280w"
+sizes="(min-width: 768px) 50vw, 65vw"
+data-zoom-src="https://jamesrobb.ca/projects/kz650/finished-04.jpg"&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;This was the result of my efforts. There was definitely more I could have done but I am very happy with it given the budget and resources I had available to me.&lt;/p&gt;
+&lt;p&gt;Thanks for reading!&lt;/p&gt;</content:encoded></item></channel></rss>
